@@ -1,10 +1,18 @@
-import { Counter } from './components';
+import { RouterFacade } from './lib';
+import { Home, Login } from './pages';
+
+const routes = [
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  // add more routes as needed
+];
 
 export const App = () => {
-  return (
-    <main>
-      <h1>Team Cypher</h1>
-      <Counter />
-    </main>
-  );
+  return <RouterFacade routes={routes} />;
 };

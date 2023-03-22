@@ -13,3 +13,5 @@
  *
  * ! Make sure to wrap all external libraries in this folder
  */
+
+export * from "./Router/AppRouter"

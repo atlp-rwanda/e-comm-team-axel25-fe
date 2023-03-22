@@ -1,17 +1,11 @@
-import { Provider } from 'react-redux';
-import store from './store';
-import Counter from './components/Counter';
+import { AppRouter } from './lib/Router/AppRouter';
+import { routes } from './Routes';
 
-export const App = () => {
+export const App = () => {  
   return (
-    <Provider store={store}>
-      <main>
-        <h1>Team Cypher</h1>
-        <Counter />
-      </main>
-    </Provider>
+    <main>
+      <AppRouter routes={routes} />
+    </main>
   );
-}
-
- export default App;
-
+};
+export default App;

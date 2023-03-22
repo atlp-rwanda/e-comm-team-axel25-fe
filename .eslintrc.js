@@ -2,24 +2,22 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    node: true,
+    node: true
   },
-  extends: [
-    'airbnb',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
+  extends: ['airbnb', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended', 'plugin:storybook/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['react', 'import', 'jsx-a11y', 'react-hooks', '@typescript-eslint'],
   rules: {
-    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.jsx'] }],
+    'react/jsx-filename-extension': [1, {
+      extensions: ['.tsx', '.jsx']
+    }],
     'react/jsx-one-expression-per-line': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
@@ -27,11 +25,11 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     'import/prefer-default-export': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/exhaustive-deps': 'warn'
   },
   settings: {
     react: {
-      version: 'detect',
-    },
-  },
+      version: 'detect'
+    }
+  }
 };

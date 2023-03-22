@@ -7,9 +7,14 @@
     "build": "webpack --config webpack/webpack.config.js --env env=prod"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
+    "@types/react-redux": "^7.1.25",
+    "@types/redux": "^3.6.0",
     "html-webpack-plugin": "^5.5.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",

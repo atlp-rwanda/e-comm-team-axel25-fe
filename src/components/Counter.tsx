@@ -1,7 +1,19 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store';
+import { increment, decrement } from '../reducers/index';
 
-export const Counter = () => {
-  const [count, setCount] = useState(0);
+function Counter() {
+  const count = useSelector((state: RootState) => state.myReducer.count);
+  const dispatch = useDispatch();
+
+  const handleIncrement = () => {
+    dispatch(increment());
+  };
+
+  const handleDecrement = () => {
+    dispatch(decrement());
+  };
+
   return (
     <div>
       <h3>
@@ -10,7 +22,11 @@ export const Counter = () => {
           <h1>🤹🏽‍♀️</h1>
         </span>{' '}
       </h3>
-      <button onClick={() => setCount((c) => c + 1)}>Count - {count}</button>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
+      <p>Count : {count}</p>
     </div>
   );
-};
+}
+
+export default Counter;

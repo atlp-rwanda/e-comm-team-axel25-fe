@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
@@ -31,12 +31,8 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader",
-        ],
-      }
+        use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
+      },
     ],
   },
   output: {
@@ -50,4 +46,3 @@ module.exports = {
   ],
   stats: 'errors-only',
 };
-      

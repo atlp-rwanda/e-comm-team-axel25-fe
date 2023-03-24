@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Routes
+  Routes,
 } from 'react-router-dom';
 import { Link as RouterLink, LinkProps } from 'react-router-dom';
 import { NotFound } from '../../pages';

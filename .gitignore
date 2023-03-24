@@ -13,6 +13,7 @@ node_modules
 dist
 build
 dist-ssr
+.netlify
 *.local
 
 # Editor directories and files
@@ -40,3 +41,5 @@ Thumbs.db
 
 # dotenv environment variables file
 .env
+# Local Netlify folder
+.netlify

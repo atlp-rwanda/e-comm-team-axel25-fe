@@ -51,6 +51,28 @@ If you are wondering why pnpm, take a look at [why](https://www.atatus.com/blog/
 pnpm dev
 ```
 
+### 🧪 Tests
+
+- A react component test sample
+
+```sh
+./src
+   ├── /__tests__
+   │   └── Toggle.spec.tsx
+```
+
+- To run tests
+
+```sh
+pnpm test
+```
+
+- To watch tests for changes and rerun
+
+```sh
+pnpm test:watch
+```
+
 <!-- CONTRIBUTING -->
 
 ## 🎨 Contributing

@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  @apply h-full bg-light dark:bg-dark grid place-items-center;
+}
+
+* {
+  @apply font-sans text-dark dark:text-light;
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded border-[0.5px] shadow hover:shadow-lg transition-all duration-300 ease-in-out backdrop-blur-sm hover:backdrop-blur-md text-center hover:-translate-y-1;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/5 text-dark hover:text-primary border-dark hover:border-primary;
+  }
+
+  .btn-primary-outline {
+    @apply bg-primary/5 hover:bg-primary/20 text-primary border-primary/50 hover:border-primary;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/5 text-dark hover:text-secondary border-dark hover:border-secondary;
+  }
+
+  .btn-secondary-outline {
+    @apply bg-secondary/5 hover:bg-secondary/20 text-secondary border-secondary/50 hover:border-secondary;
+  }
+
+  .btn-success {
+    @apply bg-success hover:bg-success/5 text-dark hover:text-success border-dark hover:border-success;
+  }
+
+  .btn-success-outline {
+    @apply bg-success/5 hover:bg-success/20 text-success border-success/50 hover:border-success;
+  }
+
+  .btn-danger {
+    @apply bg-danger hover:bg-danger/5 text-dark hover:text-danger border-dark hover:border-danger;
+  }
+
+  .btn-danger-outline {
+    @apply bg-danger/5 hover:bg-danger/20 text-danger border-danger/50 hover:border-danger;
+  }
+
+  .btn-warning {
+    @apply bg-warning hover:bg-warning/5 text-dark hover:text-warning border-dark hover:border-warning;
+  }
+
+  .btn-warning-outline {
+    @apply bg-warning/5 hover:bg-warning/20 text-warning border-warning/50 hover:border-warning;
+  }
+
+  .btn-disabled {
+    @apply bg-gray-400/5 text-gray-400 border-gray-400/30 cursor-not-allowed hover:translate-y-0;
+  }
+}

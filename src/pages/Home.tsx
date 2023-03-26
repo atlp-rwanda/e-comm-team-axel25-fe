@@ -8,7 +8,6 @@ import { LinkFacade } from '../lib';
 export const Home = () => {
   return (
     <div>
-      <h1>Team Cypher</h1>
       <Provider store={store}>
         <main>
           <h1>Team Cypher</h1>
@@ -19,14 +18,18 @@ export const Home = () => {
         Let's see if routing works. Click on the links below to navigate to
         different pages.
       </p>
-      <ul>
-        <li>
-          <LinkFacade to="/login">Login</LinkFacade>
-        </li>
-        <li>
-          <LinkFacade to="/not-found">404</LinkFacade>
-        </li>
-      </ul>
+      <LinkFacade
+        to="/login"
+        className="bg-gradient-to-r p-2 m-2 from-cyan-400 to-purple-400"
+      >
+        Login
+      </LinkFacade>
+      <LinkFacade
+        to="/not-found"
+        className="bg-gradient-to-r p-2 m-2 from-cyan-400 to-red-400"
+      >
+        404
+      </LinkFacade>
     </div>
   );
 };

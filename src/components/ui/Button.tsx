@@ -1,26 +1,6 @@
 import React from 'react';
 import { mergeClassNames } from '../../lib';
-
-type ButtonProps = {
-  label: string;
-  onClick: () => void;
-  colorScheme:
-    | 'btn-primary'
-    | 'btn-secondary'
-    | 'btn-accent'
-    | 'btn-success'
-    | 'btn-warning'
-    | 'btn-danger'
-    | 'btn-primary-outline'
-    | 'btn-secondary-outline'
-    | 'btn-accent-outline'
-    | 'btn-success-outline'
-    | 'btn-warning-outline'
-    | 'btn-danger-outline'
-    | 'disabled'
-    | 'default';
-  disabled?: boolean;
-};
+import { ButtonProps } from '../../utils/types';
 
 /**
  * Button component
@@ -34,8 +14,7 @@ type ButtonProps = {
  * <Button
  *  onClick={handleIncrement}
  * label="Increment"
- * colorScheme="primary"
- * variant="outline"
+ * colorScheme="primary-outline"
  * />
  * @example
  * <Button
@@ -53,7 +32,6 @@ export function Button({
 }: ButtonProps): JSX.Element {
   const classObject = {
     [`btn ${colorScheme}`]: true,
-    'btn-disabled': !!disabled,
   };
 
   const combinedClassNames = mergeClassNames(classObject);

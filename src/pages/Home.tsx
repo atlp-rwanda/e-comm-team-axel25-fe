@@ -5,7 +5,7 @@ import store from '../store';
 import Counter from '../components/Counter';
 import { LinkFacade } from '../lib';
 
-export const Home = () => {
+export function Home() {
   return (
     <div>
       <Provider store={store}>
@@ -15,7 +15,7 @@ export const Home = () => {
         </main>
       </Provider>
       <p>
-        Let's see if routing works. Click on the links below to navigate to
+        Let us see if routing works. Click on the links below to navigate to
         different pages.
       </p>
       <LinkFacade
@@ -32,6 +32,4 @@ export const Home = () => {
       </LinkFacade>
     </div>
   );
-};
-
-export default Home;
+}

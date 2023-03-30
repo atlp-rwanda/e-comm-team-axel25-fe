@@ -32,7 +32,7 @@ function Counter() {
 
       <section className="grid grid-cols-1 gap-10 place-items-center m-5">
         <div
-          className="grid grid-cols-2 place-items-center gap-5
+          className="grid grid-cols-3 place-items-center gap-5
         "
         >
           {/* Increment / Primary */}
@@ -47,6 +47,13 @@ function Counter() {
             colorScheme="btn-primary-outline"
           />
 
+          <Button
+            onClick={handleIncrement}
+            label="Increment"
+            colorScheme="btn-primary-disabled"
+            disabled
+          />
+
           {/* Decrement / Warning */}
           <Button
             onClick={handleDecrement}
@@ -57,6 +64,12 @@ function Counter() {
             onClick={handleDecrement}
             label="Decrement"
             colorScheme="btn-warning-outline"
+          />
+          <Button
+            onClick={handleDecrement}
+            label="Decrement"
+            colorScheme="btn-warning-disabled"
+            disabled
           />
 
           {/* Reset / Danger */}
@@ -69,6 +82,12 @@ function Counter() {
             onClick={handleReset}
             label="Reset"
             colorScheme="btn-danger-outline"
+          />
+          <Button
+            onClick={handleReset}
+            label="Reset"
+            colorScheme="btn-danger-disabled"
+            disabled
           />
 
           <Button
@@ -84,6 +103,14 @@ function Counter() {
             }}
             label="Happy"
             colorScheme="btn-success-outline"
+          />
+          <Button
+            onClick={() => {
+              // do nothing
+            }}
+            label="Happy"
+            colorScheme="btn-success-disabled"
+            disabled
           />
 
           {/* Secondary / Secondary */}
@@ -107,9 +134,11 @@ function Counter() {
             onClick={() => {
               // do nothing
             }}
-            label="Default"
-            colorScheme="default"
+            label="Secondary"
+            colorScheme="btn-secondary-disabled"
+            disabled
           />
+
           <Button
             onClick={() => {
               // do nothing
@@ -120,11 +149,9 @@ function Counter() {
 
           {/* Disabled / Disabled */}
           <Button
-            onClick={() => {
-              // do nothing
-            }}
+            onClick={handleIncrement}
             label="Disabled"
-            colorScheme="disabled"
+            colorScheme="btn-disabled"
             disabled
           />
         </div>

@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Provider } from 'react-redux';
 
 import { Navbar } from './Navbar';
-import store from '../../store';
-import { BrowserRouterFacade } from '../../lib';
+import store from '../../../store';
+import { BrowserRouterFacade } from '../../../lib';
 
 const meta = {
   title: 'Components/Navbar',

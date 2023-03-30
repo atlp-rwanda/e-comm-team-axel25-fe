@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLinkFacade } from '../../lib';
-import { logo } from '../../assets/images';
+import { NavLinkFacade } from '../../../lib';
+import { logo } from '../../../assets/images';
 
 export default function Logo() {
   return (

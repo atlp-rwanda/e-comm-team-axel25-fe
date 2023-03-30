@@ -4,9 +4,9 @@ import React, {
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FcShipped } from 'react-icons/fc';
 import { FaShoppingCart } from 'react-icons/fa';
-import { Avatar } from '../Avatar';
+import { Avatar } from '../../Avatar';
 import { MenuItem } from './MenuItem';
-import { NavLinkFacade } from '../../lib';
+import { NavLinkFacade } from '../../../lib';
 import { ThemeToggle } from './ThemeToggle';
 
 export function UserMenu() {

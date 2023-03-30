@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FiMoon, FiSun } from 'react-icons/fi';
-import { RootState } from '../../store';
-import { toggleTheme } from '../../hooks';
+import { RootState } from '../../../store';
+import { toggleTheme } from '../../../hooks';
 
 export function ThemeToggle() {
   const currentTheme = useSelector(

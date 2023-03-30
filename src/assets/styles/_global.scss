@@ -5,12 +5,15 @@
 
 @import 'tailwindcss/utilities';
 
-html,
-body,
-#root {
-  @apply h-full bg-light grid place-items-center;
+* {
+  @apply font-sans text-dark dark:text-light;
 }
 
-* {
-  @apply font-sans text-dark;
+#root {
+  @apply h-full;
+}
+
+html,
+body {
+  @apply bg-light dark:bg-dark overflow-scroll;
 }

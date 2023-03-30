@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import myReducer from './reducers';
+import { counterSlice, sideBarSlice, themeSlice } from './slices';
 
 const store = configureStore({
   reducer: {
-    // add reducers here
-    myReducer,
+    counter: counterSlice.reducer,
+    theme: themeSlice.reducer,
+    sideBar: sideBarSlice.reducer,
   },
 });
 

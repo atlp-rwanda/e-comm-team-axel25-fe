@@ -1,6 +1,4 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from '../store';
 
 import Counter from '../components/Counter';
 import { LinkFacade } from '../lib';
@@ -8,12 +6,13 @@ import { LinkFacade } from '../lib';
 export function Home() {
   return (
     <div>
-      <Provider store={store}>
-        <main>
-          <h1>Team Cypher</h1>
-          <Counter />
-        </main>
-      </Provider>
+      <main>
+        <h1>Team Cypher</h1>
+        <Counter />
+        <Counter />
+        <Counter />
+        <Counter />
+      </main>
       <p>
         Let us see if routing works. Click on the links below to navigate to
         different pages.

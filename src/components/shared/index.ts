@@ -6,3 +6,4 @@ export * from './Modal';
 export * from './Stars';
 export * from './CartSummaryCard';
 export * from './SoldByCard';
+export * from './ReviewsCard';

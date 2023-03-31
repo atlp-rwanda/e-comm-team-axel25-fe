@@ -1,0 +1,10 @@
+@layer components{
+    .label {
+        @apply  [&:not(peer-placeholder-shown)]:text-dark [&:not(peer-placeholder-shown)]:translate-x-2 [&:not(peer-placeholder-shown)]:-translate-y-3 [&:not(peer-placeholder-shown)]:bg-white  peer-focus:bg-white peer-placeholder-shown:bg-white  peer-focus:-translate-y-3 peer-placeholder-shown:translate-y-2  peer-focus:translate-x-2 peer-placeholder-shown:translate-x-1 px-2 text-gray-300 peer-focus:text-black transition origin-[0] rounded-sm;
+    }
+
+    .label--floating {
+        @extend .label;
+        @apply absolute;
+    }
+}

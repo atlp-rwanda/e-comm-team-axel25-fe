@@ -1,0 +1,20 @@
+@layer components{
+
+    .form-control--floating {
+        @apply outline-cyan-50 border-2 border-cyan-50 p-3  rounded-sm  focus:ring-0 absolute;
+        @extend .peer !optional;
+    }
+    .icon {
+        @apply w-10 h-10  aspect-auto absolute grid place-content-center top-0 right-1;
+    }
+    .icon img {
+        @apply w-full h-full;
+    }
+
+    .input--success {
+        @apply outline-cyan-500 border-cyan-500;
+    }
+    .input--warning {
+        @apply outline-red-300 border-red-300;
+    }
+}

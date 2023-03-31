@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { increment, decrement, reset } from '../reducers/index';
 import { Button } from './ui';
+import { PasswordInput } from './form';
 
 function Counter() {
   const count = useSelector((state: RootState) => state.myReducer.count);
@@ -36,16 +37,8 @@ function Counter() {
         "
         >
           {/* Increment / Primary */}
-          <Button
-            onClick={handleIncrement}
-            label="Increment"
-            colorScheme="btn-primary"
-          />
-          <Button
-            onClick={handleIncrement}
-            label="Increment"
-            colorScheme="btn-primary-outline"
-          />
+          <Button onClick={handleIncrement} label="Increment" colorScheme="btn-primary" />
+          <Button onClick={handleIncrement} label="Increment" colorScheme="btn-primary-outline" />
 
           <Button
             onClick={handleIncrement}
@@ -55,16 +48,8 @@ function Counter() {
           />
 
           {/* Decrement / Warning */}
-          <Button
-            onClick={handleDecrement}
-            label="Decrement"
-            colorScheme="btn-warning"
-          />
-          <Button
-            onClick={handleDecrement}
-            label="Decrement"
-            colorScheme="btn-warning-outline"
-          />
+          <Button onClick={handleDecrement} label="Decrement" colorScheme="btn-warning" />
+          <Button onClick={handleDecrement} label="Decrement" colorScheme="btn-warning-outline" />
           <Button
             onClick={handleDecrement}
             label="Decrement"
@@ -73,22 +58,9 @@ function Counter() {
           />
 
           {/* Reset / Danger */}
-          <Button
-            onClick={handleReset}
-            label="Reset"
-            colorScheme="btn-danger"
-          />
-          <Button
-            onClick={handleReset}
-            label="Reset"
-            colorScheme="btn-danger-outline"
-          />
-          <Button
-            onClick={handleReset}
-            label="Reset"
-            colorScheme="btn-danger-disabled"
-            disabled
-          />
+          <Button onClick={handleReset} label="Reset" colorScheme="btn-danger" />
+          <Button onClick={handleReset} label="Reset" colorScheme="btn-danger-outline" />
+          <Button onClick={handleReset} label="Reset" colorScheme="btn-danger-disabled" disabled />
 
           <Button
             onClick={() => {
@@ -148,13 +120,11 @@ function Counter() {
           />
 
           {/* Disabled / Disabled */}
-          <Button
-            onClick={handleIncrement}
-            label="Disabled"
-            colorScheme="btn-disabled"
-            disabled
-          />
+          <Button onClick={handleIncrement} label="Disabled" colorScheme="btn-disabled" disabled />
         </div>
+        <PasswordInput label="Password" />
+        <PasswordInput success label="Password" />
+        <PasswordInput warning label="Password" />
       </section>
     </div>
   );

@@ -9,6 +9,7 @@ import { ButtonProps } from '../../utils/types';
  * @param {string} variant - Button variant
  * @param {function} onClick - Button click handler
  * @param {boolean} disabled - Button disabled state
+ * @param {boolean} isSubmit - Button type
  * @returns {JSX.Element}
  * @example
  * <Button
@@ -20,6 +21,7 @@ import { ButtonProps } from '../../utils/types';
  * <Button
  * onClick={() => {}}
  * label="Disabled"
+ * isSubmit
  * colorScheme="disabled"
  * />
  */
@@ -27,6 +29,7 @@ import { ButtonProps } from '../../utils/types';
 export function Button({
   label,
   onClick,
+  isSubmit = false,
   colorScheme,
   disabled,
 }: ButtonProps): JSX.Element {
@@ -41,7 +44,7 @@ export function Button({
       className={combinedClassNames}
       onClick={onClick}
       disabled={disabled}
-      type="button"
+      type={isSubmit ? 'submit' : 'button'}
     >
       {label}
     </button>

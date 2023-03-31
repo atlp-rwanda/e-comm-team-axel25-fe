@@ -1,6 +1,7 @@
 export type ButtonProps = {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
+  isSubmit?: boolean;
   colorScheme:
     | 'btn-primary'
     | 'btn-primary-outline'

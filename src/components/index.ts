@@ -6,6 +6,7 @@ import { Counter } from './inputs/Counter';
 import { Sidebar } from './sidebar/SideBar';
 import { Modal } from './shared/modals/Modal';
 import { Heading } from './Heading';
+import { InputField } from './inputs/InputField';
 
 export {
   Footer,
@@ -16,4 +17,5 @@ export {
   Modal,
   Heading,
   Sidebar,
+  InputField,
 };

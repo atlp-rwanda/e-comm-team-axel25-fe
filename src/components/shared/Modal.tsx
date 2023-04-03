@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Modal = () => {
+export function Modal() {
   return <div>Modal</div>;
-};
+}

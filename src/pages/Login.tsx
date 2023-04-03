@@ -1,7 +1,7 @@
 import React from 'react';
 import { LinkFacade } from '../lib';
 
-export const Login = () => {
+export function Login() {
   return (
     <div>
       <h1>Login</h1>
@@ -11,4 +11,4 @@ export const Login = () => {
       <LinkFacade to="/">Home</LinkFacade>
     </div>
   );
-};
+}

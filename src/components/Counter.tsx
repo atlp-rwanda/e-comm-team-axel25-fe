@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { increment, decrement, reset } from '../reducers/index';
-import { Button } from './ui';
+import { Button } from './shared';
 
 function Counter() {
   const count = useSelector((state: RootState) => state.myReducer.count);

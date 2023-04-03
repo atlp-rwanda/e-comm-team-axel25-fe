@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const DropDown = () => {
+export function DropDown() {
   return <div>DropDown</div>;
-};
+}

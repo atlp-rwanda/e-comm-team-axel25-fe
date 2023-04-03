@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/20d51cd4e31a23e6ab85/maintainability)](https://codeclimate.com/github/atlp-rwanda/e-comm-team-axel25-fe/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/20d51cd4e31a23e6ab85/test_coverage)](https://codeclimate.com/github/atlp-rwanda/e-comm-team-axel25-fe/test_coverage)
 # 🛒 e-comm-team-axel25-fe
 
 ## 🗞️ About The Project

@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const ButtonGroup = () => {
+export function ButtonGroup() {
   return <div>ButtonGroup</div>;
-};
+}

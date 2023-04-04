@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Card = () => {
+export function Card() {
   return <div>Card</div>;
-};
+}

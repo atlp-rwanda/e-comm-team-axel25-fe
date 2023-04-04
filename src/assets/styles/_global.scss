@@ -8,9 +8,5 @@
 html,
 body,
 #root {
-  @apply h-full bg-light grid place-items-center;
-}
-
-* {
-  @apply font-sans text-dark;
+  @apply h-full bg-light dark:bg-dark;
 }

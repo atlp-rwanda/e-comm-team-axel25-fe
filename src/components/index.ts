@@ -1,3 +1,4 @@
-export * from './Counter';
-export * from './Footer';
-export * from './Navbar';
+import { Footer } from './Footer';
+import { Navbar } from './navbar/Navbar';
+
+export { Footer, Navbar };

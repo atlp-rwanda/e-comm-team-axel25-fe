@@ -1,73 +1,83 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
   Routes,
+  Link,
+  LinkProps,
+  NavLink,
+  NavLinkProps,
 } from 'react-router-dom';
-import { Link as RouterLink, LinkProps } from 'react-router-dom';
 import { NotFound } from '../../pages';
+import { BrowserRouterFacadeProps, RouterFacadeProps } from '../../utils/types';
 
-type LinkFacadeProps = LinkProps & {
-  // add any other props you want to pass to the Link component
-  /**
-   * The additional props in the 'LinkFacadeProps' type would depend on your specific 'use case' for the 'LinkFacade' component.
-   * You can add 'any props' that 'you want to pass' to 'the Link' component from the 'LinkFacade' component.
-   * For example, if you want to pass a 'className' prop to the Link component,
-   * you can add it to the LinkFacadeProps type like this:
-   *
-   * type LinkFacadeProps = LinkProps & {
-   *    className?: string;
-   *  };
-   *
-   * Then, you can pass the className prop to the Link component like this:
-   * export const LinkFacade = ({ to, children, className, ...props }: LinkFacadeProps) => {
-   *    return (
-   *      <RouterLink to={to} className={className} {...props}>
-   *        {children}
-   *      </RouterLink>
-   *    );
-   *  };
-   *
-   * Please note the way I have extract  'className' prop from passed object as well.
-   */
-};
+/**
+ * AppRouter
+ * This is a facade component for the react-router-dom Router component.
+ * @param routes - The routes to render.
+ * @returns A Router component.
+ * @example
+ * <AppRouter routes={routes} />
+ */
 
-export type RouteConfig = {
-  path: string;
-  element: React.ReactNode;
-  // add any other route props here
-};
-
-export type RouterFacadeProps = {
-  routes: RouteConfig[];
-  // add any other props that the underlying Routes component needs here
-};
-
-export const AppRouter = ({ routes }: RouterFacadeProps) => {
+export function AppRouter({ routes }: RouterFacadeProps) {
   const routeConfigs = routes.filter((route) => route.element !== null);
 
   return (
-    <Router>
-      <Routes>
-        {routeConfigs.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={route.element}
-          ></Route>
-        ))}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+    <Routes>
+      {routeConfigs.map((route) => (
+        <Route key={route.path} path={route.path} element={route.element} />
+      ))}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
-};
+}
 
-// you can also create facades for other react-router components like NavLink, Link etc.
-// e.g
-export const LinkFacade = ({ to, children, ...props }: LinkFacadeProps) => {
+/**
+ * Link
+ * This is a facade component for the react-router-dom Link component.
+ * @param to - The path to navigate to.
+ * @param children - The children of the Link component.
+ * @returns A Link component.
+ * @example
+ * <LinkFacade to="/login">Login</LinkFacade>
+ */
+
+export function LinkFacade({ to, children }: LinkProps) {
+  return <Link to={to}>{children}</Link>;
+}
+
+/**
+ * NavLink
+ * This is a facade component for the react-router-dom NavLink component.
+ * @param to - The path to navigate to.
+ * @param className - The class name of the NavLink component.
+ * @param children - The children of the NavLink component.
+ * @returns A NavLink component.
+ * @example
+ * <NavLinkFacade to="/login" className="text-blue-500">Login</NavLinkFacade>
+ */
+
+export function NavLinkFacade({ to, className, children }: NavLinkProps) {
   return (
-    <RouterLink to={to} {...props}>
+    <NavLink to={to} className={className}>
       {children}
-    </RouterLink>
+    </NavLink>
   );
-};
+}
+
+/**
+ * BrowserRouter
+ * This is a facade component for the react-router-dom BrowserRouter component.
+ * @param children - The children of the BrowserRouter component.
+ * @returns A BrowserRouter component.
+ * @example
+ * <BrowserRouterFacade>
+ * <Navbar />
+ * <AppRouter routes={routes} />
+ * </BrowserRouterFacade>
+ */
+
+export function BrowserRouterFacade({ children }: BrowserRouterFacadeProps) {
+  return <BrowserRouter>{children}</BrowserRouter>;
+}

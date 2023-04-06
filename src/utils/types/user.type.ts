@@ -6,4 +6,5 @@ export type User = {
   surname?: string|null;
   avatar?: string|null;
   role?: string |null;
+  status?: string;
 };

@@ -9,7 +9,10 @@ import { useDispatch } from 'react-redux';
 import { decodeToken } from 'react-jwt';
 import { InputField } from '../../../components/inputs/InputField';
 import { Button } from '../../../components/shared';
-import { TLoginFieldValues, loginSchema } from '../../../utils/schemas/login.schema';
+import {
+  TLoginFieldValues,
+  loginSchema,
+} from '../../../utils/schemas/login.schema';
 import { useLoginMutation } from '../services/login';
 import { login } from '../../../reducers/authReducer';
 import { config } from '../../../data';
@@ -41,7 +44,9 @@ export function LoginForm() {
 
   const dispatch = useDispatch();
 
-  const loginUserFunc: SubmitHandler<TLoginFieldValues> = (data: TLoginFieldValues) => {
+  const loginUserFunc: SubmitHandler<TLoginFieldValues> = (
+    data: TLoginFieldValues,
+  ) => {
     setIsLoading(true);
     interface UserToken {
       payload: {
@@ -58,8 +63,9 @@ export function LoginForm() {
         setMessage(payload?.message as string);
 
         setError('');
-        const usertoken: UserToken | null = decodeToken(payload?.data as string);
-        localStorage.setItem('token', payload?.data as string);
+        const usertoken: UserToken | null = decodeToken(
+          payload?.data as string,
+        );
 
         const request = await fetch(`${baseUrl}/user/${usertoken?.payload}`);
         const user = await request.json();
@@ -74,13 +80,19 @@ export function LoginForm() {
               surname: user?.data.surname,
               avatar: user?.data.avatar,
               id: user?.data.id,
+              status: user?.data.status,
             }),
           );
           localStorage.setItem('userId', user?.data.id);
         }
 
         if (request.ok) {
-          navigate('/');
+          if (user?.data.status === 'Needs_Password_Reset') {
+            navigate('/need-pri');
+          } else {
+            localStorage.setItem('token', payload?.data as string);
+            navigate('/');
+          }
         }
         reset();
       })
@@ -90,6 +102,7 @@ export function LoginForm() {
         setIsLoading(false);
       });
   };
+
   return (
     <>
       <form
@@ -138,7 +151,10 @@ export function LoginForm() {
         </Link>
         {isLoading ? (
           <div className="w-full px-4 py-2 rounded border-[0.5px] border-white btn-secondary  backdrop-blur-sm col-span-1 flex justify-center items-center">
-            <svg className="animate-spin h-5 w-5 text-gray-500" viewBox="0 0 24 24">
+            <svg
+              className="animate-spin h-5 w-5 text-gray-500"
+              viewBox="0 0 24 24"
+            >
               <circle
                 className="opacity-100"
                 cx="12"
@@ -154,7 +170,12 @@ export function LoginForm() {
           </div>
         ) : (
           <div className="col-span-1">
-            <Button isSubmit disabled={isLoading} colorScheme="btn-secondary" label="Login" />
+            <Button
+              isSubmit
+              disabled={isLoading}
+              colorScheme="btn-secondary"
+              label="Login"
+            />
           </div>
         )}
       </form>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { config } from '../data';
 import { useGoogleAuth } from '../hooks';
 import Alert from '../components/shared/Alert';
@@ -16,6 +16,7 @@ declare global {
 }
 
 export function Login() {
+  const navigate = useNavigate();
   const { handleGoogleLogin, error, loading } = useGoogleAuth();
 
   useEffect(() => {
@@ -42,10 +43,12 @@ export function Login() {
     }
   }, [handleGoogleLogin]);
 
-  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated,
+  );
 
   if (isAuthenticated) {
-    window.location.href = '/';
+    navigate('/');
   }
 
   return (

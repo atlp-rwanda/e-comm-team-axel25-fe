@@ -14,8 +14,13 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "npx eslint --fix"
-    ]
+    ],
+    "build-storybook": "storybook build",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "prepare": "husky install"
   },
+
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.3",

@@ -1,0 +1,23 @@
+.step-item {
+  @apply relative flex sm:flex-col sm:justify-center items-center sm:w-[25%] sm:h-auto h-8 dark:text-white;
+}
+.step-item:not(:first-child):before {
+  @apply content-[''] bg-gray-500 dark:bg-white absolute w-[3px] h-full sm:w-full sm:h-[3px] sm:right-2/4 right-[92.5%] top-[-10%] sm:top-1/3 -translate-y-2/4;
+}
+.step {
+  @apply w-6 sm:w-8 h-6 sm:h-8 flex items-center justify-center z-10 relative bg-gray-500 dark:bg-white rounded-full font-semibold text-white dark:text-black m-2;
+}
+.btn {
+  @apply w-24 bg-cyan-500 hover:bg-cyan-700 text-white font-medium m-1;
+}
+.active .step {
+  @apply bg-cyan-500;
+}
+.complete .step {
+  @apply bg-green-500 dark:text-white;
+}
+
+.complete:not(:first-child):before,
+.active:not(:first-child):before {
+  @apply bg-green-500 dark:bg-green-500;
+}

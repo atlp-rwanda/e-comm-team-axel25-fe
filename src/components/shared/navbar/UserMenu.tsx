@@ -87,7 +87,7 @@ export function UserMenu() {
       {isOpen && (
         <div
           ref={modalRef}
-          className="absolute right-0 w-2/5 overflow-hidden text-sm bg-white shadow-md dark:bg-dark/25 backdrop-blur dark:border rounded-xl md:w-3/4 top-12"
+          className="absolute right-0 z-10 w-[40vw] overflow-hidden text-sm bg-white rounded shadow-md dark:bg-dark/25 backdrop-blur dark:border dark:border-primary md:w-3/4 top-12"
         >
           <div className="flex flex-col">
             <MenuItem

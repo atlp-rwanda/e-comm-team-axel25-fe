@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { themeSlice } from './hooks';
+import { useSideBar, useTheme } from './hooks';
 
 const store = configureStore({
   reducer: {
-    theme: themeSlice.reducer,
+    theme: useTheme.reducer,
+    sideBar: useSideBar.reducer,
   },
 });
 

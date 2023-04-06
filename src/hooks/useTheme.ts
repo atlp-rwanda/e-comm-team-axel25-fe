@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 type ThemeState = {
@@ -9,17 +8,16 @@ const initialState = {
   currentTheme: 'system',
 } satisfies ThemeState;
 
-export const themeSlice = createSlice({
+export const useTheme = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    toggleTheme: (state) => {
-      state.currentTheme = state.currentTheme === 'light' ? 'dark' : 'light';
-    },
-    setSystemPreference: (state) => {
-      state.currentTheme = 'system';
-    },
+    toggleTheme: (state) => ({
+      ...state,
+      currentTheme: state.currentTheme === 'light' ? 'dark' : 'light',
+    }),
+    setSystemPreference: (state) => ({ ...state, currentTheme: 'system' }),
   },
 });
 
-export const { toggleTheme, setSystemPreference } = themeSlice.actions;
+export const { toggleTheme, setSystemPreference } = useTheme.actions;

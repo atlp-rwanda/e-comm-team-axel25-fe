@@ -32,6 +32,7 @@ export function Button({
   isSubmit = false,
   colorScheme,
   disabled,
+  className,
 }: ButtonProps): JSX.Element {
   const classObject = {
     [`btn ${colorScheme}`]: true,
@@ -41,7 +42,7 @@ export function Button({
 
   return (
     <button
-      className={combinedClassNames}
+      className={`${combinedClassNames} ${className}`}
       onClick={onClick}
       disabled={disabled}
       type={isSubmit ? 'submit' : 'button'}
@@ -53,4 +54,5 @@ export function Button({
 
 Button.defaultProps = {
   disabled: false,
+  className: '',
 };

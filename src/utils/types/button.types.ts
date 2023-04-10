@@ -24,4 +24,5 @@ export type ButtonProps = {
     | 'btn-disabled'
     | 'default';
   disabled?: boolean;
+  className?: string
 };

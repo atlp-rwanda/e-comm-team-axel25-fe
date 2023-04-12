@@ -5,6 +5,7 @@ import { authApi, cartApi, productApi, resetPasswordApi } from './services';
 import { ecomApi } from './features/authentication/services/login';
 import { ecomUserApi } from './features/authentication/services/getUser';
 import { cartSlice, authSlice } from './reducers';
+import { twoFactorAuthApi } from './features/authentication/twoFA/2faSlice';
 import { notificationApi } from './features/notification/services/notifications';
 
 const store = configureStore({
@@ -19,6 +20,8 @@ const store = configureStore({
     [productApi.reducerPath]: productApi.reducer,
     [resetPasswordApi.reducerPath]: resetPasswordApi.reducer,
     [cartApi.reducerPath]: cartApi.reducer,
+    [twoFactorAuthApi.reducerPath]: twoFactorAuthApi.reducer,
+
     [notificationApi.reducerPath]: notificationApi.reducer,
   },
 
@@ -31,6 +34,7 @@ const store = configureStore({
       productApi.middleware,
       cartApi.middleware,
       notificationApi.middleware,
+      twoFactorAuthApi.middleware,
     ),
 });
 

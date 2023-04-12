@@ -20,6 +20,8 @@ import { RequireAuth } from '../components';
 import { Register } from '../pages/Register';
 import NeedPRI from '../features/authentication/components/NeedPRI';
 import { ProfileUpdate } from '../pages/profile/profileUpdate';
+import Settings from '../components/dashboards/Settings';
+import TokenInputModalRender from '../features/authentication/twoFA/tokenInputModal';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,6 +46,13 @@ export const router = createBrowserRouter(
             <Route path="create" element={<CreateProduct />} />
             <Route path="update/:id" element={<UpdateProduct />} />
             <Route path=":id" element={<ProductDetails />} />
+          </Route>
+          <Route path="settings">
+            <Route index element={<Settings />} />
+            <Route
+              path="2fa/success-route"
+              element={<TokenInputModalRender />}
+            />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Route>

@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { useUpdateProductMutation } from '../../../../services';
+import { useNavigate } from 'react-router-dom';
+import { useGetProductsQuery, useUpdateProductMutation } from '../../../../services';
 import {
   TProduct,
   TUpdateProductFieldValues,
@@ -14,10 +15,14 @@ import {
 } from '../../../../utils/schemas';
 import { Button } from '../../../shared';
 import { Loader } from '../../../Loader';
+import { useGetAllNotificationsQuery } from '../../../../features/notification/services/notifications';
 
 export function Update({ product }: { product: TProduct }) {
   const [isLoading, setIsLoading] = useState(false);
   const [updateProduct] = useUpdateProductMutation();
+  const navigate = useNavigate();
+  const { refetch } = useGetProductsQuery();
+  const { refetch: notifications } = useGetAllNotificationsQuery();
 
   const {
     register,
@@ -48,7 +53,9 @@ export function Update({ product }: { product: TProduct }) {
       .unwrap()
       .then(() => {
         reset();
-        window.location.href = '/dashboard/seller/product';
+        refetch();
+        notifications();
+        navigate('/dashboard/seller/product');
         setIsLoading(false);
       })
       .catch((err) => {

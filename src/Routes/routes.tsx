@@ -1,5 +1,9 @@
 import React from 'react';
-import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
 import { SellerDashboardLayout, RootLayout } from '../layouts';
 import {
   CreateProduct,
@@ -14,7 +18,6 @@ import {
   PasswordReset,
   Profile,
   PasswordUpdate,
-
 } from '../pages';
 import { RequireAuth } from '../components';
 import { Register } from '../pages/Register';
@@ -22,6 +25,11 @@ import NeedPRI from '../features/authentication/components/NeedPRI';
 import { ProfileUpdate } from '../pages/profile/profileUpdate';
 import Settings from '../components/dashboards/Settings';
 import TokenInputModalRender from '../features/authentication/twoFA/tokenInputModal';
+import { AdminDashboardLayout } from '../layouts/AdminDashboardLayout';
+import { Users } from '../pages/Admin/Users';
+import { Buyers } from '../pages/Admin/Buyers';
+import { Sellers } from '../pages/Admin/Sellers';
+import { Disabled } from '../pages/Admin/Disabled';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,7 +46,10 @@ export const router = createBrowserRouter(
       <Route path="password-reset" element={<PasswordReset />} />
       <Route path="update-password" element={<PasswordUpdate />} />
 
-      <Route path="dashboard" element={<RequireAuth allowedRoles={['Seller']} />}>
+      <Route
+        path="dashboard"
+        element={<RequireAuth allowedRoles={['Seller']} />}
+      >
         <Route path="seller" element={<SellerDashboardLayout />}>
           <Route index element={<SellerCentral />} />
           <Route path="product">
@@ -57,7 +68,19 @@ export const router = createBrowserRouter(
           <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
-
+      <Route
+        path="dashboard"
+        element={<RequireAuth allowedRoles={['Admin']} />}
+      >
+        <Route path="admin" element={<AdminDashboardLayout />}>
+          <Route path="users">
+            <Route path="all" element={<Users />} />
+            <Route path="buyer" element={<Buyers />} />
+            <Route path="seller" element={<Sellers />} />
+            <Route path="disabled" element={<Disabled />} />
+          </Route>
+        </Route>
+      </Route>
       <Route path="need-pri" element={<NeedPRI />} />
 
       <Route path="*" element={<NotFound />} />

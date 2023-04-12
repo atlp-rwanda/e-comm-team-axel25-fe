@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '../shared';
 import { mergeClassNames } from '../../lib';
+import { AdminMenuLinks } from '../../utils/AdminMenuLinks';
 
 const sellerMenuLinks = [
   {
@@ -25,7 +26,13 @@ const sellerMenuLinks = [
     path: 'settings',
   },
 ];
-export function Menu() {
+export function Menu({
+  headOfMenu,
+  isSeller,
+}: {
+  headOfMenu: string,
+  isSeller: boolean
+}) {
   const navLinkStyles = mergeClassNames({
     'active:bg-primary flex items-center p-3 w-full text-sm font-medium text-gray-700 hover:bg-gray-100 dark:hover:bg-dark hover:text-secondary dark:hover:text-secondary dark:text-white':
       true,
@@ -36,26 +43,42 @@ export function Menu() {
       <header>
         <NavLink to="/dashboard/seller">
           <h2 className="px-4 py-2 text-2xl font-bold text-gray-700 dark:text-white">
-            Seller Central
+            {headOfMenu}
           </h2>
         </NavLink>
       </header>
-      <Link to="/dashboard/seller/product/create" className="w-full">
-        <Button label="Create product" colorScheme="btn-secondary-outline" />
-      </Link>
+      {isSeller && (
+        <Link to="/dashboard/seller/product/create" className="w-full">
+          <Button label="Create product" colorScheme="btn-secondary-outline" />
+        </Link>
+      )}
       <nav className="sticky flex flex-col items-start mt-4 overflow-hidden font-medium text-gray-700 bg-white rounded-lg shadow top-20 dark:text-white dark:bg-dark2">
-        {sellerMenuLinks.map((link) => (
-          <NavLink
-            key={link.name}
-            to={link.path}
-            className={({ isActive }) => (isActive
-              ? 'text-secondary p-3 bg-gray-100 dark:bg-dark w-full'
-              : navLinkStyles)}
-            end
-          >
-            {link.name}
-          </NavLink>
-        ))}
+        {isSeller
+          && sellerMenuLinks.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              className={({ isActive }) => (isActive
+                ? 'text-secondary p-3 bg-gray-100 dark:bg-dark w-full'
+                : navLinkStyles)}
+              end
+            >
+              {link.name}
+            </NavLink>
+          ))}
+        {!isSeller
+          && AdminMenuLinks.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              className={({ isActive }) => (isActive
+                ? 'text-secondary p-3 bg-gray-100 dark:bg-dark w-full'
+                : navLinkStyles)}
+              end
+            >
+              {link.name}
+            </NavLink>
+          ))}
       </nav>
     </section>
   );

@@ -4,6 +4,7 @@ import { useSideBar, useTheme } from './hooks';
 import { authApi, cartApi, productApi, resetPasswordApi } from './services';
 import { ecomApi } from './features/authentication/services/login';
 import { ecomUserApi } from './features/authentication/services/getUser';
+import { userApi } from './services/user';
 import { cartSlice, authSlice } from './reducers';
 import { twoFactorAuthApi } from './features/authentication/twoFA/2faSlice';
 import { notificationApi } from './features/notification/services/notifications';
@@ -19,6 +20,7 @@ const store = configureStore({
     [ecomUserApi.reducerPath]: ecomUserApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
     [resetPasswordApi.reducerPath]: resetPasswordApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
     [cartApi.reducerPath]: cartApi.reducer,
     [twoFactorAuthApi.reducerPath]: twoFactorAuthApi.reducer,
 
@@ -35,6 +37,7 @@ const store = configureStore({
       cartApi.middleware,
       notificationApi.middleware,
       twoFactorAuthApi.middleware,
+      userApi.middleware,
     ),
 });
 

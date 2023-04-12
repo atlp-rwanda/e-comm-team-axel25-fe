@@ -3,11 +3,11 @@ import { Outlet } from 'react-router-dom';
 import { Container } from '../components/Container';
 import { Menu } from '../components/dashboards';
 
-export function SellerDashboardLayout() {
+export function AdminDashboardLayout() {
   return (
     <Container>
       <section className="grid grid-flow-row grid-cols-1 gap-5 pb-10 sm:grid-cols-5">
-        <Menu headOfMenu="Seller Central" isSeller />
+        <Menu headOfMenu="Admin Central" isSeller={false} />
         <main
           id="section-content"
           className="flex justify-center col-span-2 sm:col-span-4"

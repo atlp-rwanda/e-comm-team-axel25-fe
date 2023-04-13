@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Container } from '../components/Container';
 import { config } from '../data';
 import { useGoogleAuth } from '../hooks';
 import Alert from '../components/shared/Alert';

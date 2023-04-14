@@ -10,7 +10,7 @@ export function MenuItem({ onClick, label }: MenuItemProps) {
     <button
       type="button"
       onClick={onClick}
-      className="px-4 py-3 font-semibold text-right transition dark:text-white hover:bg-neutral-100 dark:hover:bg-primary/50"
+      className="px-4 py-3 font-semibold text-left transition dark:text-white hover:bg-neutral-100 dark:hover:bg-primary/50 hover:text-primary"
     >
       {label}
     </button>

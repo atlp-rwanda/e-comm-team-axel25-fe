@@ -9,7 +9,7 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div>
       <Navbar />
-      {children}
+      <div className="pb-20 pt-28 bg-light dark:bg-dark">{children}</div>
     </div>
   );
 }

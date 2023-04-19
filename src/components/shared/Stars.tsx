@@ -7,12 +7,14 @@ type ReviewsProp = {
 
 function Stars({ num }: ReviewsProp) {
   return (
-    <div className="bg-white rounded-md w-28 h-7 py-1 px-4">
-      <span className="flex flex-row">
+    <div className="flex items-center justify-center">
+      <span className="flex gap-1">
         {Array.from({ length: 5 }, (_, i) => (
           <TiStarFullOutline
             key={i}
-            className={i < num ? 'fill-yellow-500' : 'fill-gray-600'}
+            className={
+              i < num ? 'fill-yellow-500' : 'fill-gray-600 dark:fill-gray-400'
+            }
           />
         ))}
       </span>

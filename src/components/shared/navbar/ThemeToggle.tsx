@@ -35,10 +35,8 @@ export function ThemeToggle() {
   let icon;
   if (currentTheme === 'light') {
     icon = <FiMoon size={20} />;
-  } else if (currentTheme === 'dark') {
-    icon = <FiSun size={20} stroke="yellow" />;
   } else {
-    icon = <FiSun size={20} />;
+    icon = <FiSun size={20} stroke="yellow" />;
   }
   return (
     <button

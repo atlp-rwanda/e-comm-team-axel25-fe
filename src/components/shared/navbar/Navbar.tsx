@@ -3,11 +3,12 @@ import { Container } from '../../Container';
 import Logo from './Logo';
 import { Search } from './Search';
 import { UserMenu } from './UserMenu';
+import { Categories } from './Categories';
 
 export function Navbar() {
   return (
     <nav className="fixed z-10 w-full bg-white shadow-sm dark:bg-dark2">
-      <div className="py-4 border-b dark:border-primary">
+      <div className="py-2 border-b dark:border-primary">
         <Container>
           <div className="flex items-center justify-between gap-3 md:gap-0">
             <Logo />
@@ -16,6 +17,7 @@ export function Navbar() {
           </div>
         </Container>
       </div>
+      <Categories />
     </nav>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { LinkFacade } from '../lib';
+import ReviewsCard from '../components/shared/ReviewsCard';
 
 export function Login() {
   return (

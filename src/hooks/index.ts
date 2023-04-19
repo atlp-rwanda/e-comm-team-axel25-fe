@@ -5,3 +5,4 @@ export * from './useSideBar';
 export * from './useHomeLogic';
 export * from './useSideBar';
 export * from './useModal';
+export * from './usePagination';

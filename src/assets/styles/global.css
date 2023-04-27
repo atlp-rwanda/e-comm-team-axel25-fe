@@ -1,0 +1,24 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import './components/button.css';
+
+@layer base {
+  body {
+    @apply text-dark dark:text-light;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-zinc-900 dark:text-zinc-200;
+  }
+
+  hr {
+    @apply border-cyan-400 dark:border-cyan-700/25;
+  }
+}

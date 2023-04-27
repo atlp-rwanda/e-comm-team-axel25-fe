@@ -1,9 +1,7 @@
 import React from 'react';
 
 export function Home() {
-  return (
-    <div className="flex flex-col min-h-screen">Home</div>
-  );
+  return <div>Home</div>;
 }
 
 export default Home;

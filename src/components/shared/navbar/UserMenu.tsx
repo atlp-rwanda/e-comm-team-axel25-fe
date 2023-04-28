@@ -4,6 +4,7 @@ import React, {
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FcShipped } from 'react-icons/fc';
 import { FaShoppingCart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import { Avatar } from '../../Avatar';
 import { MenuItem } from './MenuItem';
 import { NavLinkFacade } from '../../../lib';
@@ -14,6 +15,7 @@ export function UserMenu() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
+  const navigate = useNavigate();
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -93,6 +95,7 @@ export function UserMenu() {
             <MenuItem
               label="Login"
               onClick={() => {
+                navigate('/login');
                 // TODO: Implement login modal
               }}
             />

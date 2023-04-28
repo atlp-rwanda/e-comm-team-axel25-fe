@@ -4,4 +4,4 @@
  * Basically, the services folder is about integrating with an API / backend.
  */
 
-export * from './analytics';
+export * from './googleApi';

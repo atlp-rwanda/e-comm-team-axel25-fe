@@ -20,6 +20,12 @@ module.exports = {
   },
   plugins: ['react', 'import', 'jsx-a11y', 'react-hooks', '@typescript-eslint'],
   rules: {
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['**/webpack*.ts'],
+      },
+    ],
     'react/jsx-filename-extension': [
       1,
       {

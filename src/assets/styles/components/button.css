@@ -12,7 +12,7 @@
   }
 
   .btn-primary-disabled {
-    @apply bg-primary/25 cursor-not-allowed hover:translate-y-0 shadow-none hover:shadow-none;
+    @apply shadow-none cursor-not-allowed bg-primary/25 hover:translate-y-0 hover:shadow-none;
   }
 
   .btn-secondary {
@@ -24,7 +24,7 @@
   }
 
   .btn-secondary-disabled {
-    @apply bg-secondary/25 cursor-not-allowed hover:translate-y-0 shadow-none hover:shadow-none;
+    @apply shadow-none cursor-not-allowed bg-secondary/25 hover:translate-y-0 hover:shadow-none;
   }
 
   .btn-success {
@@ -36,7 +36,7 @@
   }
 
   .btn-success-disabled {
-    @apply bg-success/25 cursor-not-allowed hover:translate-y-0 shadow-none hover:shadow-none;
+    @apply shadow-none cursor-not-allowed bg-success/25 hover:translate-y-0 hover:shadow-none;
   }
 
   .btn-danger {
@@ -48,7 +48,7 @@
   }
 
   .btn-danger-disabled {
-    @apply bg-danger/25 cursor-not-allowed hover:translate-y-0 shadow-none hover:shadow-none;
+    @apply shadow-none cursor-not-allowed bg-danger/25 hover:translate-y-0 hover:shadow-none;
   }
 
   .btn-warning {
@@ -60,10 +60,10 @@
   }
 
   .btn-warning-disabled {
-    @apply bg-warning/25 cursor-not-allowed hover:translate-y-0 shadow-none hover:shadow-none;
+    @apply shadow-none cursor-not-allowed bg-warning/25 hover:translate-y-0 hover:shadow-none;
   }
 
   .btn-disabled {
-    @apply bg-gray-400/5 text-gray-400 border-gray-400/30 cursor-not-allowed hover:translate-y-0 shadow-none hover:shadow-none;
+    @apply text-gray-400 shadow-none cursor-not-allowed bg-gray-400/5 border-gray-400/30 hover:translate-y-0 hover:shadow-none;
   }
 }

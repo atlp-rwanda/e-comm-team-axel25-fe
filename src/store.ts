@@ -1,18 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { useSideBar, useTheme } from './hooks';
-import authReducer from './reducers/authReducer';
-import { googleApi } from './services';
+import { authSlice } from './reducers';
+import { googleApi, productApi } from './services';
 
 const store = configureStore({
   reducer: {
     theme: useTheme.reducer,
     sideBar: useSideBar.reducer,
-    authReducer,
+    auth: authSlice.reducer,
     [googleApi.reducerPath]: googleApi.reducer,
+    [productApi.reducerPath]: productApi.reducer,
   },
 
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(googleApi.middleware),
+  middleware: (g) => g().concat(googleApi.middleware, productApi.middleware),
 });
 
 setupListeners(store.dispatch);

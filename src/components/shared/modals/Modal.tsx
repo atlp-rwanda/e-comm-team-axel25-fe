@@ -1,7 +1,7 @@
 import React from 'react';
 import { ModalLogicParams, useModalLogic } from '../../../hooks';
 import { ModalHeader } from './ModalHeader';
-import { ModalFooter } from './ModalFooter';
+import { ColorScheme, ModalFooter } from './ModalFooter';
 import { mergeClassNames } from '../../../lib';
 
 type ModalProps = {
@@ -15,6 +15,7 @@ type ModalProps = {
   disabled?: boolean;
   secondaryAction?: () => void;
   secondaryActionLabel?: string;
+  actionColorScheme: ColorScheme;
 };
 
 export function Modal({
@@ -28,6 +29,7 @@ export function Modal({
   disabled,
   secondaryAction,
   secondaryActionLabel,
+  actionColorScheme,
 }: ModalProps) {
   const ModalLogicArgs: ModalLogicParams = {
     onClose,
@@ -75,6 +77,7 @@ export function Modal({
               handleSubmit={handleSubmit}
               secondaryAction={secondaryAction}
               secondaryActionLabel={secondaryActionLabel}
+              actionColorScheme={actionColorScheme}
             />
           </div>
         </div>
@@ -87,7 +90,7 @@ Modal.defaultProps = {
   isOpen: false,
   title: '',
   body: <div>Body</div>,
-  footer: <div>Footer</div>,
+  footer: <div />,
   disabled: false,
   secondaryAction: () => {
     // do something

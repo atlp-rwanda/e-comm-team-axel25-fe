@@ -1,15 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+
 import Footer from './Footer';
 import { ThemeToggle } from '../navbar/ThemeToggle';
-import { BrowserRouterFacade } from '../../../lib';
 import store from '../../../store';
 
 export default {
   title: 'Components/Footer',
   component: Footer,
   decorators: [
-    (Story:string) => (
+    (Story: string) => (
       <>
         <Provider store={store}>
           <ThemeToggle />
@@ -24,8 +25,8 @@ export default {
 
 export function Default() {
   return (
-    <BrowserRouterFacade>
+    <BrowserRouter>
       <Footer />
-    </BrowserRouterFacade>
+    </BrowserRouter>
   );
 }

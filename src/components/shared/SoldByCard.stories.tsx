@@ -1,7 +1,8 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { BrowserRouter } from 'react-router-dom';
+
 import SoldByCard from './SoldByCard';
-import { BrowserRouterFacade } from '../../lib';
 
 const meta = {
   title: 'Components/SoldByCard',
@@ -13,9 +14,9 @@ const meta = {
   },
   decorators: [
     (StoryComponent) => (
-      <BrowserRouterFacade>
+      <BrowserRouter>
         <StoryComponent />
-      </BrowserRouterFacade>
+      </BrowserRouter>
     ),
   ],
 } satisfies Meta<typeof SoldByCard>;

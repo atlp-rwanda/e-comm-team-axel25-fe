@@ -14,6 +14,9 @@ module.exports = {
         warning: '#EAB308',
         danger: '#EF4444',
       },
+      fontFamily: {
+        sans: ['Nunito', 'sans-serif'],
+      },
     },
     plugins: [],
   },

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Heading } from '../Heading';
 import Stars from '../shared/Stars';
 import { Button } from '../shared';
 import { Counter } from '../inputs/Counter';
-import { LinkFacade } from '../../lib';
 
 type ProductInfoProps = {
   title: string;
@@ -28,9 +28,9 @@ export function ProductInfo({
         <Heading title={title} subtitle={category} />
         <div className="flex items-center justify-start gap-2">
           <Stars num={rating} />
-          <LinkFacade to={`/products/${category}`}>
+          <Link to={`/products/${category}`}>
             <span className="text-sm text-primary">125 Reviews</span>
-          </LinkFacade>
+          </Link>
           <span className="px-1 text-sm border-l text-neutral-500 dark:text-neutral-400 border-neutral-700">
             123 Orders
           </span>

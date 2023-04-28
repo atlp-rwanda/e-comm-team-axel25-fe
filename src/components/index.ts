@@ -7,6 +7,9 @@ import { Sidebar } from './sidebar/SideBar';
 import { Modal } from './shared/modals/Modal';
 import { Heading } from './Heading';
 import { InputField } from './inputs/InputField';
+import { SelectorField } from './inputs/SelectorField';
+import { Loader } from './Loader';
+import { RequireAuth } from './RequireAuth';
 
 export {
   Footer,
@@ -18,4 +21,7 @@ export {
   Heading,
   Sidebar,
   InputField,
+  SelectorField,
+  Loader,
+  RequireAuth,
 };

@@ -5,6 +5,8 @@ import { config } from '../data';
 import { useGoogleAuth } from '../hooks';
 import Alert from '../components/shared/Alert';
 import { checkEnv } from '../utils';
+import { Demo } from '../components/inputs/Demo';
+import { Demo2 } from '../components/inputs/Demo2';
 
 declare global {
   interface Window {
@@ -44,6 +46,8 @@ export function Login() {
       <h1>Login</h1>
       <p>Awesome 🎉! You just reached the login page.</p>
       <p>{baseUrl}</p>
+      <Demo />
+      <Demo2 />
       <p>Now try to navigate to the home page.</p>
       <LinkFacade to="/">Home</LinkFacade>
       <main className="flex__center">

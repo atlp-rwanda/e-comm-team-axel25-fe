@@ -9,9 +9,12 @@ export const loginSchema = z.object({
     .email({
       message: 'Please enter a valid email address',
     }),
-  password: z.string().min(6, {
-    message: 'Password must be at least 6 characters',
-  }),
+  password: z.string().nonempty()
+    .min(6, {
+
+      message: 'enter valid password',
+    })
+  ,
 });
 
 export type TLoginFieldValues = z.infer<typeof loginSchema>;

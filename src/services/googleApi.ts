@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { config } from '../data';
 import { checkEnv } from '../utils';
 
-const baseUrl = checkEnv(config.REACT_APP_API_BASE_URL);
+const baseUrl = checkEnv({ param: config.REACT_APP_API_BASE_URL });
 
 export const googleApi = createApi({
   reducerPath: 'googleApi',

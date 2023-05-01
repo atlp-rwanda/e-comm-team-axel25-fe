@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container } from '../components/Container';
 import { config } from '../data';
 import { useGoogleAuth } from '../hooks';
 import Alert from '../components/shared/Alert';
 import { checkEnv } from '../utils';
+import { LoginForm } from '../features/authentication';
+import { RootState } from '../store';
+import loginImage from '../../public/images/loginImage.png';
 
 declare global {
   interface Window {
@@ -14,8 +18,6 @@ declare global {
 
 export function Login() {
   const { handleGoogleLogin, error, loading } = useGoogleAuth();
-
-  const baseUrl = checkEnv(config.REACT_APP_API_BASE_URL);
 
   useEffect(() => {
     const CLIENT_ID = checkEnv(config.REACT_APP_GOOGLE_CLIENT_ID);
@@ -31,25 +33,45 @@ export function Login() {
         {
           theme: 'outline',
           text: 'continue_with',
-          shape: 'pill',
+          shape: 'circle',
           type: 'standard',
           logo_alignment: 'center',
+          size: 'large',
+          width: 400,
         },
       );
     }
   }, [handleGoogleLogin]);
 
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+
+  if (isAuthenticated) {
+    window.location.href = '/';
+  }
+
   return (
-    <Container>
-      <h1>Login</h1>
-      <p>Awesome 🎉! You just reached the login page.</p>
-      <p>{baseUrl}</p>
-      <p>Now try to navigate to the home page.</p>
-      <Link to="/">Home</Link>
-      <main className="flex__center">
-        {!error && loading ? <div>Loading....</div> : <div id="loginDiv" />}
-        {error && <Alert message={error} />}
-      </main>
-    </Container>
+    <div className="sm:grid  sm:grid-flow-col justify-items-center flex flex-col-reverse ">
+      <div>
+        <div className="hidden sm:flex">
+          <img src={loginImage} alt="" />
+        </div>
+        <h1 className="text-center mt-4 text-gray-800 dark:text-white pb-7 text-xl sm:text-4xl">
+          Dont have account,
+          <Link to="/register" className="text-re">
+            {' '}
+            Signup here
+          </Link>
+        </h1>
+      </div>
+
+      <div className="flex flex-col">
+        <LoginForm />
+
+        <main className="flex__center mt-3 align-middle self-center">
+          {!error && loading ? <div>Loading....</div> : <div id="loginDiv" />}
+          {error && <Alert message={error} />}
+        </main>
+      </div>
+    </div>
   );
 }

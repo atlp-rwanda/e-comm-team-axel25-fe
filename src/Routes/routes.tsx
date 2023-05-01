@@ -29,7 +29,7 @@ export const router = createBrowserRouter(
 
       <Route
         path="dashboard"
-        element={<RequireAuth allowedRoles={['SELLER']} />}
+        element={<RequireAuth allowedRoles={['Seller']} />}
       >
         <Route path="seller" element={<SellerDashboardLayout />}>
           <Route index element={<SellerCentral />} />

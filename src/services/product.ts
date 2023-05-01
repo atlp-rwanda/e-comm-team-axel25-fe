@@ -21,10 +21,7 @@ export const productApi = createApi({
         method: 'GET',
       }),
     }),
-    getProducts: builder.query<
-      { data: TProduct[]; status: number; success: boolean },
-      void
-    >({
+    getProducts: builder.query<{ data: TProduct[]; status: number; success: boolean }, void>({
       query: () => ({
         url: '/product/items',
         method: 'GET',

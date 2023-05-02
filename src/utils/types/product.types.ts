@@ -8,7 +8,7 @@ export type Image = {
 };
 
 export type ProductCardProps = {
-  images: Image[];
+  image: string;
   title: string;
   category: string;
   description: string;

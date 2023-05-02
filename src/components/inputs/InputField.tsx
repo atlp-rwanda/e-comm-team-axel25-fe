@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { IconType } from 'react-icons';
 import {
   UseFormRegister,
@@ -14,6 +14,7 @@ export type TInputFieldProps<T extends FieldValues> = {
 
   register?: UseFormRegister<T>;
   errors?: FieldErrors<T>;
+  customOnChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 
   type?: string;
   disabled?: boolean;
@@ -47,6 +48,7 @@ export type TInputFieldProps<T extends FieldValues> = {
  * register={register}
  * errors={errors}
  * icon={MdEmail}
+ * customOnChange={onChange}
  * required
  * />
  *
@@ -72,10 +74,12 @@ export function InputField<T extends FieldValues>({
   disabled = false,
   icon: Icon,
   required = false,
+  customOnChange,
 }: TInputFieldProps<T>) {
   const registerFunction = register?.(id as Path<T>, {
     required,
     [type === 'number' ? 'valueAsNumber' : '']: true,
+    [type === 'date' ? 'valueAsDate' : '']: true,
   });
 
   const {
@@ -120,7 +124,7 @@ export function InputField<T extends FieldValues>({
           placeholder=" "
           type={type}
           className={inputClassNames}
-          onChange={onChange}
+          onChange={customOnChange || onChange}
           onBlur={onBlur}
           name={name}
           ref={ref}
@@ -145,4 +149,5 @@ InputField.defaultProps = {
   required: false,
   register: undefined,
   errors: undefined,
+  customOnChange: undefined,
 };

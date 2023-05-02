@@ -4,10 +4,9 @@ import React, {
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FcShipped } from 'react-icons/fc';
 import { FaShoppingCart } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Avatar } from '../../Avatar';
 import { MenuItem } from './MenuItem';
-import { NavLinkFacade } from '../../../lib';
 import { ThemeToggle } from './ThemeToggle';
 
 export function UserMenu() {
@@ -55,7 +54,7 @@ export function UserMenu() {
         {/* THEME TOGGLE END HERE */}
         {/* CART START HERE */}
         <div className="relative flex flex-col items-start justify-center">
-          <NavLinkFacade
+          <NavLink
             to="/cart"
             className="hidden px-4 py-3 text-sm font-semibold transition rounded-md md:block hover:bg-neutral-100"
           >
@@ -63,16 +62,16 @@ export function UserMenu() {
             <span className="absolute top-0 flex items-center justify-center h-4 p-1 text-xs font-semibold text-white rounded-full left-10 bg-danger">
               0
             </span>
-          </NavLinkFacade>
+          </NavLink>
         </div>
         {/* CART END HERE */}
         {/* ORDERS START HERE */}
-        <NavLinkFacade
+        <NavLink
           to="/orders"
           className="hidden px-4 py-3 text-sm font-semibold transition rounded-md md:block hover:bg-neutral-100"
         >
           <FcShipped size={20} />
-        </NavLinkFacade>
+        </NavLink>
         {/*  ORDERS END HERE */}
         <button
           ref={buttonRef}

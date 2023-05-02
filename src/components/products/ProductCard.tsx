@@ -8,7 +8,7 @@ export function ProductCard({
   title,
   category,
   description,
-  images,
+  image,
   price,
   rating,
 }: ProductCardProps) {
@@ -16,7 +16,7 @@ export function ProductCard({
     <Container>
       <div className="max-w-screen-lg mx-auto ">
         <div className="grid items-start grid-cols-1 gap-6 sm:grid-cols-3">
-          <ProductImage images={images} />
+          <ProductImage image={image} />
           <ProductInfo
             title={title}
             category={category}

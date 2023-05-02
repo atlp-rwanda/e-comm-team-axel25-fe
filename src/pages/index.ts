@@ -1,7 +1,11 @@
 export * from './Home';
 export * from './Login';
 export * from './NotFound';
-export * from './Register';
-export * from './Settings';
-export * from './Products';
 export * from './Login';
+export * from './Forbidden';
+
+export * from './seller';
+export * from './seller/SellerProducts';
+export * from './seller/CreateProduct';
+export * from './seller/UpdateProduct';
+export * from './seller/ProductDetails';

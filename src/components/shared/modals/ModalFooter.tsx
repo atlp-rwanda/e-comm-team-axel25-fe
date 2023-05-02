@@ -1,5 +1,8 @@
 import React from 'react';
 import { Button } from '../Button';
+import { ButtonProps } from '../../../utils/types';
+
+export type ColorScheme = ButtonProps['colorScheme'];
 
 type ModalFooterProps = {
   actionLabel: string;
@@ -9,6 +12,7 @@ type ModalFooterProps = {
   handleSubmit: () => void;
   secondaryAction?: () => void;
   secondaryActionLabel?: string;
+  actionColorScheme: ColorScheme;
 };
 export function ModalFooter({
   actionLabel,
@@ -18,6 +22,7 @@ export function ModalFooter({
   footer,
   secondaryAction,
   secondaryActionLabel,
+  actionColorScheme,
 }: ModalFooterProps) {
   return (
     <footer className="flex flex-col gap-2 p-6">
@@ -34,7 +39,7 @@ export function ModalFooter({
           disabled={disabled}
           label={actionLabel}
           onClick={handleSubmit}
-          colorScheme="btn-secondary"
+          colorScheme={actionColorScheme}
         />
       </div>
       {footer}

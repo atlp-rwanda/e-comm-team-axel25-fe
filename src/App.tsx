@@ -1,18 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { AppRouter, BrowserRouterFacade } from './lib';
-import { routes } from './Routes';
+import { RouterProvider } from 'react-router-dom';
 import store from './store';
-import { Layout } from './layouts';
+import { router } from './Routes';
 
 export function App() {
   return (
     <Provider store={store}>
-      <BrowserRouterFacade>
-        <Layout>
-          <AppRouter routes={routes} />
-        </Layout>
-      </BrowserRouterFacade>
+      <RouterProvider router={router} />
     </Provider>
   );
 }

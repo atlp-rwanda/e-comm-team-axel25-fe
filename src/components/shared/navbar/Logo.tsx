@@ -1,13 +1,13 @@
 import React from 'react';
-import { NavLinkFacade } from '../../../lib';
+import { NavLink } from 'react-router-dom';
 import { logo } from '../../../assets/images';
 
 export default function Logo() {
   return (
     <div className="hidden md:block">
-      <NavLinkFacade to="/">
+      <NavLink to="/">
         <img src={logo} alt="Logo" />
-      </NavLinkFacade>
+      </NavLink>
     </div>
   );
 }

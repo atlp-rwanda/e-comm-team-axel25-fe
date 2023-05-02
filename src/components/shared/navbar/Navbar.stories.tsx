@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 import { Navbar } from './Navbar';
 import store from '../../../store';
-import { BrowserRouterFacade } from '../../../lib';
 
 const meta = {
   title: 'Components/Navbar',
@@ -13,9 +13,9 @@ const meta = {
   decorators: [
     (StoryComponent) => (
       <Provider store={store}>
-        <BrowserRouterFacade>
+        <BrowserRouter>
           <StoryComponent />
-        </BrowserRouterFacade>
+        </BrowserRouter>
       </Provider>
     ),
   ],

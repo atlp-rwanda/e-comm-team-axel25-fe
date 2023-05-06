@@ -8,3 +8,4 @@ export * from './CartSummaryCard';
 export * from './SoldByCard';
 export * from './ReviewsCard';
 export * from '../cart/CartItem';
+export * from './PaymentDetailsCard';

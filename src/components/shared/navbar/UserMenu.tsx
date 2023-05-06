@@ -4,7 +4,7 @@ import React, {
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FcShipped } from 'react-icons/fc';
 import { FaShoppingCart } from 'react-icons/fa';
-import {NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '../../Avatar';
 import { MenuItem } from './MenuItem';
@@ -17,6 +17,7 @@ export function UserMenu() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  // const { user } = useSelector((state: RootState) => state.auth);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -50,9 +51,7 @@ export function UserMenu() {
     setIsOpen((prev) => !prev);
   }, []);
 
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.auth.isAuthenticated,
-  );
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   return (
     <div className="relative">
       <div className="flex items-center gap-3">
@@ -105,8 +104,8 @@ export function UserMenu() {
           </button>
         )}
       </div>
-      {isOpen && (
-        !isAuthenticated ? (
+      {isOpen
+        && (!isAuthenticated ? (
           <div
             ref={modalRef}
             className="absolute right-0 z-10 w-[40vw] overflow-hidden text-sm bg-white rounded shadow-md dark:bg-dark/25 backdrop-blur dark:border dark:border-primary md:w-3/4 top-12"
@@ -121,7 +120,9 @@ export function UserMenu() {
               <MenuItem
                 label="Sign Up"
                 onClick={() => {
-                // TODO: Implement sign up modal
+                  navigate('/register');
+
+                  // TODO: Implement sign up modal
                 }}
               />
             </div>
@@ -136,7 +137,7 @@ export function UserMenu() {
                 label="profile"
                 onClick={() => {
                   navigate('/profile');
-                // TODO: Implement login modal
+                  // TODO: Implement login modal
                 }}
               />
               <MenuItem
@@ -149,8 +150,7 @@ export function UserMenu() {
               />
             </div>
           </div>
-        )
-      ) }
+        ))}
     </div>
   );
 }

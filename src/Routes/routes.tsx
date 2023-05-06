@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from 'react-router-dom';
+import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import { SellerDashboardLayout, RootLayout } from '../layouts';
 import {
   CreateProduct,
@@ -17,6 +13,7 @@ import {
   UpdateProduct,
 } from '../pages';
 import { RequireAuth } from '../components';
+import { Register } from '../pages/Register';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,13 +21,11 @@ export const router = createBrowserRouter(
       <Route index element={<Home />} />
 
       <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
 
       <Route path="forbidden" element={<Forbidden />} />
 
-      <Route
-        path="dashboard"
-        element={<RequireAuth allowedRoles={['Seller']} />}
-      >
+      <Route path="dashboard" element={<RequireAuth allowedRoles={['Seller']} />}>
         <Route path="seller" element={<SellerDashboardLayout />}>
           <Route index element={<SellerCentral />} />
           <Route path="product">

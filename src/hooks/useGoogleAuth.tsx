@@ -2,10 +2,10 @@ import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { config } from '../data';
-import { useGoogleLoginMutation } from '../services';
 import { login } from '../reducers/authReducer';
 import { User } from '../utils/types';
 import { checkEnv } from '../utils';
+import { useGoogleLoginMutation } from '../services/authenticationApi';
 
 const baseUrl = checkEnv({ param: config.REACT_APP_API_BASE_URL });
 

@@ -11,4 +11,5 @@ export * from './seller/UpdateProduct';
 export * from './seller/ProductDetails';
 export * from './Dashboard';
 export * from './PasswordReset';
+export * from './PasswordUpdate';
 export * from './profile/Profile';

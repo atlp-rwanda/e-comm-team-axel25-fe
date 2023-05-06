@@ -1,4 +1,5 @@
 import * as z from 'zod';
+import { passwordSchema } from './password.schema';
 
 export const loginSchema = z.object({
   email: z
@@ -9,11 +10,7 @@ export const loginSchema = z.object({
     .email({
       message: 'Please enter a valid email address',
     }),
-  password: z.string().nonempty()
-    .min(6, {
-
-      message: 'enter valid password',
-    })
+  password: passwordSchema
   ,
 });
 

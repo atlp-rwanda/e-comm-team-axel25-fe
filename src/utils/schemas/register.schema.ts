@@ -1,4 +1,5 @@
 import * as z from 'zod';
+import { passwordSchema } from './password.schema';
 
 export const registerSchema = z.object({
   email: z
@@ -9,12 +10,7 @@ export const registerSchema = z.object({
     .email({
       message: 'Please enter a valid email address',
     }),
-  password: z
-    .string()
-    .min(6, {
-      message: 'Password must be at least 6 characters',
-    })
-    .regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/),
+  password: passwordSchema,
   given_name: z.string().min(3, {
     message: 'given name must be at least 3 characters',
   }),

@@ -1,9 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { config } from '../data';
-import { checkEnv } from '../utils';
+import { checkEnv, getToken } from '../utils';
 import { TRegisterFieldValues } from '../utils/schemas/register.schema';
+import { TUpdatePasswordFieldValues } from '../utils/schemas';
 
 const baseUrl = checkEnv(config.REACT_APP_API_BASE_URL);
+
+const token = getToken();
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -29,7 +32,18 @@ export const authApi = createApi({
         },
       }),
     }),
+    updatePassword: builder.mutation<null, TUpdatePasswordFieldValues>({
+      query: (payload) => ({
+        url: '/auth/updatepassword',
+        method: 'POST',
+        body: payload,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGoogleLoginMutation, useRegisterMutation } = authApi;
+export const { useGoogleLoginMutation, useRegisterMutation, useUpdatePasswordMutation } = authApi;

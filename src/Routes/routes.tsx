@@ -13,6 +13,7 @@ import {
   UpdateProduct,
   PasswordReset,
   Profile,
+  PasswordUpdate,
 
 } from '../pages';
 import { RequireAuth } from '../components';
@@ -33,6 +34,7 @@ export const router = createBrowserRouter(
 
       <Route path="forbidden" element={<Forbidden />} />
       <Route path="password-reset" element={<PasswordReset />} />
+      <Route path="update-password" element={<PasswordUpdate />} />
 
       <Route path="dashboard" element={<RequireAuth allowedRoles={['Seller']} />}>
         <Route path="seller" element={<SellerDashboardLayout />}>

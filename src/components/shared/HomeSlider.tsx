@@ -47,7 +47,7 @@ export function HomeSlider({ images }: Images) {
       </div>
       <div className="absolute left-0 right-0 flex items-end justify-center bottom-3">
         {images.map((img, slideIndex) => (
-          <button type="button" key={img} onClick={() => goToSlide(slideIndex)}>
+          <button type="button" key={img + crypto.randomUUID()} onClick={() => goToSlide(slideIndex)}>
             <RxDotFilled
               className={`cursor-pointer ${
                 imageIndex === slideIndex ? 'text-white' : 'text-white opacity-50'

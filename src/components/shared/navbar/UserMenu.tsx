@@ -52,6 +52,8 @@ export function UserMenu() {
   }, []);
 
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const userId = useSelector((state: RootState) => state.auth.user.id);
+
   return (
     <div className="relative">
       <div className="flex items-center gap-3">
@@ -136,8 +138,7 @@ export function UserMenu() {
               <MenuItem
                 label="profile"
                 onClick={() => {
-                  navigate('/profile');
-                  // TODO: Implement login modal
+                  navigate(`/profile/${userId}`);
                 }}
               />
               <MenuItem
@@ -145,7 +146,7 @@ export function UserMenu() {
                 onClick={() => {
                   localStorage.clear();
                   dispatch(logout());
-                  window.location.href = '/login';
+                  navigate('/login');
                 }}
               />
             </div>

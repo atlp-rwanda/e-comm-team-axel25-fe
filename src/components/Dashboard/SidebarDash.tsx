@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { BsFillPersonFill } from 'react-icons/bs';
 import { RootState } from '../../store';
 import { useHomeLogic } from '../../hooks';
 import { Sidebar } from '../sidebar/Sidebar';
@@ -15,9 +14,9 @@ export function SidebarDash() {
   const user = useSelector((state: RootState) => state.auth.user);
 
   const profileData = {
-    image: `${user.avatar}` || <BsFillPersonFill size={50} />,
-    name: 'Unkwon name',
-    role: 'user',
+    image: user.avatar ? <img src={user.avatar} alt="Profile" className="w-[50px] h-[50px] rounded-full" /> : '',
+    name: user.given_name !== null && user.given_name !== undefined ? user.given_name : '',
+    role: user.role !== null && user.role !== undefined ? user.role : '',
   };
 
   return (

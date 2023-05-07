@@ -12,9 +12,12 @@ import {
   SellerProducts,
   UpdateProduct,
   PasswordReset,
+  Profile,
+
 } from '../pages';
 import { RequireAuth } from '../components';
 import { Register } from '../pages/Register';
+import { ProfileUpdate } from '../pages/profile/profileUpdate';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +27,8 @@ export const router = createBrowserRouter(
 
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
+      <Route path="profile/:userId" element={<Profile />} />
+      <Route path="profile/edit/:userId" element={<ProfileUpdate />} />
 
       <Route path="forbidden" element={<Forbidden />} />
       <Route path="password-reset" element={<PasswordReset />} />

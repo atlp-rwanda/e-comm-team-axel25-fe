@@ -1,7 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { config } from '../../../data/constants';
+import { getToken } from '../../../utils';
 
+const token = getToken();
 const baseUrl = config.REACT_APP_API_BASE_URL;
+
 export const ecomUserApi = createApi({
   reducerPath: 'ecomUserApi',
   tagTypes: ['user'],
@@ -13,6 +16,17 @@ export const ecomUserApi = createApi({
         method: 'GET',
       }),
     }),
+    updateUser: builder.mutation({
+      query: ({ id, body }) => ({
+        url: `/user/update/${id}`,
+        method: 'PATCH',
+        body,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
   }),
 });
-export const { useGetUserQuery } = ecomUserApi;
+export const { useGetUserQuery, useUpdateUserMutation } = ecomUserApi;

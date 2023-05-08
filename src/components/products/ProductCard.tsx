@@ -11,6 +11,7 @@ export function ProductCard({
   image,
   price,
   rating,
+  quantity,
 }: ProductCardProps) {
   return (
     <Container>
@@ -23,6 +24,7 @@ export function ProductCard({
             description={description}
             price={price}
             rating={rating}
+            quantity={quantity}
           />
         </div>
       </div>

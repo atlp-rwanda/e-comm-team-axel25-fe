@@ -11,6 +11,7 @@ type ProductInfoProps = {
   rating: number;
   price: number;
   description: string;
+  quantity: number;
 };
 
 export function ProductInfo({
@@ -19,8 +20,9 @@ export function ProductInfo({
   rating,
   price,
   description,
+  quantity,
 }: ProductInfoProps) {
-  const [quantity, setQuantity] = useState(1);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   return (
     <section className="grid gap-5">
@@ -44,17 +46,17 @@ export function ProductInfo({
         <span className="flex items-center gap-2 text-sm text-neutral-500 dark:text-neutral-400">
           Stock:{' '}
           <span className="px-4 py-2 font-bold text-black border rounded-md shadow-sm dark:text-white">
-            {1}
+            {quantity}
           </span>
-          35 available
+          available
         </span>
         <hr className="dark:border-primary" />
         <Counter
           title="Quantity"
           onChange={(value) => {
-            setQuantity(value);
+            setSelectedQuantity(value);
           }}
-          value={quantity}
+          value={selectedQuantity}
           max={10}
         />
         <Button

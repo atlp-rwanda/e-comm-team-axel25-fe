@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 
 import { MdDangerous } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 import { TProduct } from '../../../../utils/schemas';
 import { Modal } from '../../../shared';
@@ -18,14 +19,19 @@ export function DeleteProductDialogue({
   setIsOpen,
 }: DeleteProductDialogueProps) {
   const [deleteProduct] = useDeleteProductMutation();
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
 
   const handleProductDelete = (id: string) => {
-    deleteProduct(id);
-    setIsOpen(!isOpen);
+    deleteProduct(id)
+      .unwrap()
+      .then(() => {
+        setIsOpen(!isOpen);
+        navigate('/dashboard/seller/product', { replace: true });
+      });
   };
   const bodyContent = (
     <div className="flex flex-col items-center justify-center text-gray-700 dark:text-white">

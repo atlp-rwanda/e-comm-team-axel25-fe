@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { useSideBar, useTheme } from './hooks';
 import { authSlice } from './reducers/authReducer';
-import { authApi, productApi } from './services';
+import { authApi, productApi, resetPasswordApi } from './services';
 import { ecomApi } from './features/authentication/services/login';
 import { ecomUserApi } from './features/authentication/services/getUser';
 
@@ -15,13 +15,15 @@ const store = configureStore({
     [ecomApi.reducerPath]: ecomApi.reducer,
     [ecomUserApi.reducerPath]: ecomUserApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
+    [resetPasswordApi.reducerPath]: resetPasswordApi.reducer,
   },
 
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+  middleware: (g) => g()
     .concat(authApi.middleware)
     .concat(ecomApi.middleware)
     .concat(ecomUserApi.middleware)
-    .concat(productApi.middleware),
+    .concat(productApi.middleware, resetPasswordApi.middleware),
+
 });
 
 setupListeners(store.dispatch);

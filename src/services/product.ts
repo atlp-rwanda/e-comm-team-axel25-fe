@@ -8,7 +8,7 @@ const token = getToken();
 export const productApi = createApi({
   reducerPath: 'productApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: checkEnv({ param: config.REACT_APP_API_BASE_URL }),
+    baseUrl: checkEnv(config.REACT_APP_API_BASE_URL),
   }),
   tagTypes: ['Products'],
   endpoints: (builder) => ({
@@ -21,7 +21,10 @@ export const productApi = createApi({
         method: 'GET',
       }),
     }),
-    getProducts: builder.query<{ data: TProduct[]; status: number; success: boolean }, void>({
+    getProducts: builder.query<
+      { data: TProduct[]; status: number; success: boolean },
+      void
+    >({
       query: () => ({
         url: '/product/items',
         method: 'GET',

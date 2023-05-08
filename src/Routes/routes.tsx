@@ -11,6 +11,7 @@ import {
   SellerCentral,
   SellerProducts,
   UpdateProduct,
+  PasswordReset,
 } from '../pages';
 import { RequireAuth } from '../components';
 import { Register } from '../pages/Register';
@@ -19,11 +20,13 @@ export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
+      <Route path="product/:id" element={<ProductDetails />} />
 
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
 
       <Route path="forbidden" element={<Forbidden />} />
+      <Route path="password-reset" element={<PasswordReset />} />
 
       <Route path="dashboard" element={<RequireAuth allowedRoles={['Seller']} />}>
         <Route path="seller" element={<SellerDashboardLayout />}>

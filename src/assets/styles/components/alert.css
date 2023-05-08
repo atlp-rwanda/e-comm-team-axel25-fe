@@ -1,0 +1,84 @@
+@layer components {
+  .primary {
+    @apply bg-primary hover:bg-cyan-600;
+
+  }
+  
+  .primary .close {
+    @apply bg-cyan-600;
+  }
+
+  .primary-outline {
+    @apply bg-primary/5 hover:bg-primary/20 text-primary border-primary/50 hover:border-primary;
+
+  }
+
+  .primary-outline .close {
+    @apply bg-primary/20 border-primary;
+  }
+
+  .secondary {
+    @apply bg-secondary hover:bg-purple-600;
+  }
+  .secondary.close {
+    @apply bg-purple-600;
+  }
+
+  .secondary-outline {
+    @apply bg-secondary/5 hover:bg-secondary/20 text-secondary border-secondary/50 hover:border-secondary;
+
+  }
+
+  .secondary-outline .close {
+    @apply bg-secondary/20 border-secondary;
+  }
+
+  .success {
+    @apply bg-success hover:bg-green-600;
+  }
+
+  .success .close {
+    @apply bg-green-600;
+  }
+
+  .success-outline {
+    @apply bg-success/5 hover:bg-success/20 text-success border-success/50 hover:border-success;
+  }
+  
+  .success-outline .close {
+    @apply bg-success/20 border-success;
+  }
+
+  .danger {
+    @apply bg-danger hover:bg-red-600;
+
+  }
+
+  .danger .close {
+    @apply bg-red-600;
+  }
+
+  .danger-outline {
+    @apply bg-danger/5 hover:bg-danger/20 text-danger border-danger/50 hover:border-danger;
+  }
+
+  .danger-outline .close {
+    @apply bg-danger/20 border-danger;
+  }
+
+  .warning {
+    @apply bg-warning hover:bg-yellow-600;
+  }
+
+  .warning .close {
+    @apply bg-yellow-600;
+  }
+
+  .warning-outline {
+    @apply bg-warning/5 hover:bg-warning/20 text-warning border-warning/50 hover:border-warning;
+  }
+
+  .warning-outline .close {
+    @apply bg-warning/20 border-warning;
+  }
+}

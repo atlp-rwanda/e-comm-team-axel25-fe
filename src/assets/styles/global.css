@@ -5,6 +5,7 @@
 @import 'tailwindcss/utilities';
 
 @import './components/button.css';
+@import './components/alert.css';
 
 @layer base {
   body {
@@ -23,4 +24,8 @@
   hr {
     @apply border-cyan-400 dark:border-cyan-700/25;
   }
+}
+
+.thumb-hide::-webkit-scrollbar {
+  display: none;
 }

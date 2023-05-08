@@ -3,7 +3,7 @@ import { getStorage } from 'firebase/storage';
 import { checkEnv } from '../utils';
 import { config } from '../data';
 
-const apiKey = checkEnv({ param: config.REACT_APP_FIREBASE_API_KEY });
+const apiKey = checkEnv(config.REACT_APP_FIREBASE_API_KEY);
 const firebaseConfig = {
   apiKey,
   authDomain: 'cypher-549ac.firebaseapp.com',

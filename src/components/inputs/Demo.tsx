@@ -18,9 +18,7 @@ export function Demo() {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit: SubmitHandler<TLoginFieldValues> = (
-    data: TLoginFieldValues,
-  ) => {
+  const onSubmit: SubmitHandler<TLoginFieldValues> = (data: TLoginFieldValues) => {
     setIsLoading(true);
     console.log(data);
     setIsLoading(false);
@@ -53,12 +51,7 @@ export function Demo() {
         />
       </div>
       <div className="col-span-1">
-        <Button
-          isSubmit
-          disabled={isLoading}
-          colorScheme="btn-secondary"
-          label="Login"
-        />
+        <Button isSubmit disabled={isLoading} colorScheme="btn-secondary" label="Login" />
       </div>
     </form>
   );

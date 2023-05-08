@@ -6,10 +6,7 @@ import {
 } from 'react-icons/bi';
 import { InputField } from './InputField';
 import { Button } from '../shared';
-import {
-  TCreateProductFieldValues,
-  createProductSchema,
-} from '../../utils/schemas';
+import { TCreateProductFieldValues, createProductSchema } from '../../utils/schemas';
 
 export function Demo2() {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -23,9 +20,7 @@ export function Demo2() {
     resolver: zodResolver(createProductSchema),
   });
 
-  const onSubmit: SubmitHandler<TCreateProductFieldValues> = (
-    data: TCreateProductFieldValues,
-  ) => {
+  const onSubmit: SubmitHandler<TCreateProductFieldValues> = (data: TCreateProductFieldValues) => {
     setIsLoading(true);
     console.log(data);
     setIsLoading(false);
@@ -79,12 +74,7 @@ export function Demo2() {
         />
       </div>
       <div className="col-span-1">
-        <Button
-          isSubmit
-          disabled={isLoading}
-          colorScheme="btn-secondary"
-          label="Create Product"
-        />
+        <Button isSubmit disabled={isLoading} colorScheme="btn-secondary" label="Create Product" />
       </div>
     </form>
   );

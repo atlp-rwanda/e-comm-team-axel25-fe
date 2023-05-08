@@ -1,8 +1,15 @@
 import React from 'react';
 import { BsFillPersonFill } from 'react-icons/bs';
 import {
-  FaSignOutAlt, FaTable, FaRegSun,
-  FaRegUser, FaShoppingCart, FaHouseUser, FaTh, FaBullhorn, FaRocketchat,
+  FaSignOutAlt,
+  FaTable,
+  FaRegSun,
+  FaRegUser,
+  FaShoppingCart,
+  FaHouseUser,
+  FaTh,
+  FaBullhorn,
+  FaRocketchat,
 } from 'react-icons/fa';
 
 export const subMenuList = [
@@ -22,18 +29,19 @@ export const subMenuList = [
     menus: ['All users', 'Buyer', 'Seller', 'Dissabled user'],
   },
 ];
-export const datadown = [{
-  icon: FaRegSun,
-  name: 'Settings',
-},
-{
-  icon: FaRegUser,
-  name: 'Account',
-},
-{
-  icon: FaSignOutAlt,
-  name: 'Logout',
-},
+export const datadown = [
+  {
+    icon: FaRegSun,
+    name: 'Settings',
+  },
+  {
+    icon: FaRegUser,
+    name: 'Account',
+  },
+  {
+    icon: FaSignOutAlt,
+    name: 'Logout',
+  },
 ];
 
 export const menuItems = [

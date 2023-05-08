@@ -143,7 +143,7 @@ export function UserMenu() {
               <MenuItem
                 label="logout"
                 onClick={() => {
-                  localStorage.removeItem('token');
+                  localStorage.clear();
                   dispatch(logout());
                   window.location.href = '/login';
                 }}

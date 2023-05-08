@@ -1,4 +1,4 @@
-export * from './SideBar';
+export * from './Sidebar';
 export * from './SideBarButton';
 export * from './SideBarButton';
 export * from './ScrollButton';

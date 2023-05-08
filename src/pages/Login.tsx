@@ -19,7 +19,7 @@ export function Login() {
   const { handleGoogleLogin, error, loading } = useGoogleAuth();
 
   useEffect(() => {
-    const CLIENT_ID = checkEnv({ param: config.REACT_APP_GOOGLE_CLIENT_ID });
+    const CLIENT_ID = checkEnv(config.REACT_APP_GOOGLE_CLIENT_ID);
 
     if (window.google && CLIENT_ID) {
       window.google.accounts.id.initialize({
@@ -49,12 +49,12 @@ export function Login() {
   }
 
   return (
-    <div className="sm:grid  sm:grid-flow-col justify-items-center flex flex-col-reverse ">
+    <div className="flex flex-col-reverse sm:grid sm:grid-flow-col justify-items-center ">
       <div>
         <div className="hidden sm:flex">
           <img src={loginImage} alt="" />
         </div>
-        <h1 className="text-center mt-4 text-gray-800 dark:text-white pb-7 text-xl sm:text-4xl">
+        <h1 className="mt-4 text-xl text-center text-gray-800 dark:text-white pb-7 sm:text-4xl">
           Dont have account,
           <Link to="/register" className="text-re">
             {' '}
@@ -66,6 +66,9 @@ export function Login() {
       <div className="flex flex-col">
         <LoginForm />
 
+        <p className="my-4">
+          <Link to="/password-reset">forgot password?</Link>
+        </p>
         <main className="flex__center mt-3 align-middle self-center">
           {!error && loading ? <div>Loading....</div> : <div id="loginDiv" />}
           {error && <Alert message={error} />}

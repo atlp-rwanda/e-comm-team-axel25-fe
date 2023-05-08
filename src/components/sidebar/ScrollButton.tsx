@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '../shared';
 
 type ScrollButtonProps = {
   direction: 'left' | 'right';
@@ -9,11 +8,15 @@ type ScrollButtonProps = {
 export function ScrollButton({ direction, onClick }: ScrollButtonProps) {
   return (
     <div className="hidden mx-2 shadow md:block">
-      <Button
-        colorScheme="btn-primary-outline"
+      <button
         onClick={onClick}
-        label={direction === 'left' ? '<' : '>'}
-      />
+        className={`w-12 bg-transparent h-full absolute top-0 ${
+          direction === 'left' ? 'left-20' : 'right-0'
+        }`}
+        type="button"
+      >
+        {' '}
+      </button>
     </div>
   );
 }

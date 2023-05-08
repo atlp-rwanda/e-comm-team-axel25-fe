@@ -7,7 +7,7 @@ import { User } from '../utils/types';
 import { checkEnv } from '../utils';
 import { useGoogleLoginMutation } from '../services/authenticationApi';
 
-const baseUrl = checkEnv({ param: config.REACT_APP_API_BASE_URL });
+const baseUrl = checkEnv(config.REACT_APP_API_BASE_URL);
 
 export const useGoogleAuth = () => {
   const dispatch = useDispatch();

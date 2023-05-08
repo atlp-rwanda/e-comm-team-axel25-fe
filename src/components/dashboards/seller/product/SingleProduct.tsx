@@ -7,6 +7,7 @@ import { NotFound } from '../../../../pages';
 import { Button } from '../../../shared';
 import { ProductCard } from '../../../products/ProductCard';
 import { TProduct } from '../../../../utils/schemas';
+import { Container } from '../../../Container';
 
 export function SingleProduct({ id }: { id: string }) {
   const { isLoading, error, data } = useGetProductQuery(id);
@@ -19,22 +20,25 @@ export function SingleProduct({ id }: { id: string }) {
 
   if (id === undefined) return <NotFound />;
   return (
-    <div>
-      <div className="max-w-[100px] my-2">
-        <Button
-          colorScheme="btn-warning-outline"
-          label="Go Back"
-          onClick={() => navigate(-1)}
+    <Container>
+      <div className="flex gap-5 ">
+        <div className="">
+          <Button
+            colorScheme="btn-warning-outline"
+            label="Go Back"
+            onClick={() => navigate(-1)}
+          />
+        </div>
+        <ProductCard
+          category={product.category}
+          description={product.description}
+          image={product.images}
+          price={product.price}
+          title={product.name}
+          rating={product.quantity}
+          quantity={product.quantity}
         />
       </div>
-      <ProductCard
-        category={product.category}
-        description={product.description}
-        image={product.images}
-        price={product.price}
-        title={product.name}
-        rating={product.quantity}
-      />
-    </div>
+    </Container>
   );
 }

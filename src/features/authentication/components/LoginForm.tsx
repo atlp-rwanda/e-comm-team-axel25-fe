@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { BsFillLockFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { decodeToken } from 'react-jwt';
 import { InputField } from '../../../components/inputs/InputField';
@@ -64,6 +64,7 @@ export function LoginForm() {
         const request = await fetch(`${baseUrl}/user/${usertoken?.payload}`);
         const user = await request.json();
         localStorage.setItem('Role', user?.data.role);
+        localStorage.setItem('id', user?.data.id);
 
         if (user?.data) {
           dispatch(
@@ -80,9 +81,6 @@ export function LoginForm() {
         if (request.ok) {
           navigate('/');
         }
-
-        // Dispatch login and id action to update auth state
-        dispatch(login({ token: payload?.data || null }));
         reset();
       })
       .catch((err) => {
@@ -136,7 +134,9 @@ export function LoginForm() {
             </button>
           </div>
         </div>
-        <small className="ml-15">Forget password</small>
+        <Link to="/password-reset">
+          <small className="ml-15">Forget password</small>
+        </Link>
         {isLoading ? (
           <div className="w-full px-4 py-2 rounded border-[0.5px] border-white btn-secondary  backdrop-blur-sm col-span-1 flex justify-center items-center">
             <svg className="animate-spin h-5 w-5 text-gray-500" viewBox="0 0 24 24">

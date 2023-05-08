@@ -8,13 +8,14 @@ const meta = {
   title: 'Components/ProductCard',
   component: ProductCard,
   tags: ['autodocs'],
-  args: {
-    title: 'Product Title',
-    category: 'Category',
-    description: 'Product Description',
-    images,
-    price: 100,
-    rating: 4,
+  argTypes: {
+    title: { control: 'text' },
+    category: { control: 'text' },
+    description: { control: 'text' },
+    image: { control: 'text' },
+    price: { control: 'number' },
+    rating: { control: 'number' },
+    quantity: { control: 'number' },
   },
   decorators: [
     (Story) => (
@@ -28,4 +29,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    title: 'Product Title',
+    category: 'Product Category',
+    description: 'Product Description',
+    image: images[0].imageSrc,
+    price: 100,
+    rating: 4,
+    quantity: 10,
+  },
+};

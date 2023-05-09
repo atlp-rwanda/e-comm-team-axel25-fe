@@ -14,6 +14,7 @@ type ProductInfoProps = {
   price: number;
   description: string;
   quantity: number;
+  seller: string;
 };
 
 export function ProductInfo({
@@ -24,6 +25,7 @@ export function ProductInfo({
   price,
   description,
   quantity,
+  seller,
 }: ProductInfoProps) {
   const [addToCart] = useAddToCartMutation();
   const { refetch } = useGetCartItemsQuery();
@@ -64,6 +66,7 @@ export function ProductInfo({
           </span>
           available
         </span>
+        <Link to={`/chat/${seller}`}>contact seller</Link>
         <hr className="dark:border-primary" />
         <Counter
           title="Quantity"

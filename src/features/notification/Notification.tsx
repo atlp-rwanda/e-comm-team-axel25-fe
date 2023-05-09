@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { io } from 'socket.io-client';
-import { checkEnv, getToken } from '../../utils';
-import { config } from '../../data';
+import { getToken } from '../../utils';
 
 const token = getToken();
 
 export function Notification() {
-  const socket = io(checkEnv(config.REACT_APP_API_BASE), {
+  const socket = io('https://cypherapi.onrender.com', {
     query: {
       token,
     },

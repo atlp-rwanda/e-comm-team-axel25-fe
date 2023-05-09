@@ -13,6 +13,7 @@ export function ProductCard({
   price,
   rating,
   quantity,
+  seller,
 }: ProductCardProps) {
   return (
     <Container>
@@ -27,9 +28,11 @@ export function ProductCard({
             price={price}
             rating={rating}
             quantity={quantity}
+            seller={seller}
           />
         </div>
       </div>
+
     </Container>
   );
 }

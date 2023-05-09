@@ -17,6 +17,7 @@ import {
 } from '../pages';
 import { RequireAuth } from '../components';
 import { Register } from '../pages/Register';
+import NeedPRI from '../features/authentication/components/NeedPRI';
 import { ProfileUpdate } from '../pages/profile/profileUpdate';
 
 export const router = createBrowserRouter(
@@ -45,6 +46,8 @@ export const router = createBrowserRouter(
           <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
+
+      <Route path="need-pri" element={<NeedPRI />} />
 
       <Route path="*" element={<NotFound />} />
     </Route>,

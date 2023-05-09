@@ -3,14 +3,13 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeToggle } from '../shared/navbar/ThemeToggle';
 import store from '../../store';
-
-import { SidebarDash } from '../Dashboard/SidebarDash';
+import { Sidebar } from '../cart/Sidebar';
 
 export default {
   title: 'Components/Sidebar',
-  component: SidebarDash,
+  component: Sidebar,
   decorators: [
-    (Story:string) => (
+    (Story: string) => (
       <>
         <Provider store={store}>
           <ThemeToggle />
@@ -27,9 +26,8 @@ export function Default() {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <SidebarDash />
+        <Sidebar />
       </Provider>
     </BrowserRouter>
-
   );
 }

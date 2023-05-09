@@ -1,16 +1,21 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from '../components';
-import { SidebarDash } from '../components/Dashboard/SidebarDash';
+import { Sidebar } from '../components/cart/Sidebar';
 
 export function RootLayout() {
   const location = useLocation();
-  const hideSidebar = ['/login', '/register', '/dashboard/seller'].includes(location.pathname);
+  const isLoggedIn = localStorage.getItem('token');
+  const isSupposedToBeVisible = ![
+    '/login',
+    '/register',
+    '/dashboard/seller',
+  ].includes(location.pathname);
 
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      {!hideSidebar && <SidebarDash />}
+      {isLoggedIn && isSupposedToBeVisible && <Sidebar />}
       <main className="pt-36">
         <Outlet />
       </main>

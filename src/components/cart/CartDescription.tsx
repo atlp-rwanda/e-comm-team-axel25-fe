@@ -1,47 +1,96 @@
-import React, { useState } from 'react';
-import { Counter } from '../inputs/Counter';
+import React, { FormEvent } from 'react';
+import {
+  useDeleteCartItemMutation,
+  useGetCartItemsQuery,
+  useUpdateCartMutation,
+} from '../../services';
+import { Button } from '../shared';
 
 type CartDescriptionProps = {
-  stock: string;
-  leftInStock: number;
-  soldBy: string;
+  id: string;
   name: string;
   image: string;
+  totalPrice: number;
+  quantity: number;
+  available: number;
+  productId: string;
 };
 
 export function CartDescription({
-  stock,
-  leftInStock,
-  soldBy,
+  id,
   name,
   image,
+  totalPrice,
+  quantity,
+  available,
+  productId,
 }: CartDescriptionProps) {
-  const [quantity, setQuantity] = useState(1);
+  const [updateCartItem] = useUpdateCartMutation();
+  const { refetch } = useGetCartItemsQuery();
+  const [deleteItem] = useDeleteCartItemMutation();
+
+  const handleRemoveFromCart = () => {
+    deleteItem(id)
+      .unwrap()
+      .then(() => refetch())
+      .catch((e: any) => {
+        console.log(e.message);
+      });
+  };
+  const handleUpdateCart = (event: FormEvent) => {
+    event.preventDefault();
+    updateCartItem({
+      id: productId,
+      body: {
+        quantity: Number((event.target as HTMLSelectElement).value),
+      },
+    })
+      .unwrap()
+      .then(() => refetch())
+      .catch((e: any) => console.log(e));
+  };
 
   return (
-    <div className="flex flex-col items-center gap-3 md:flex-row">
-      <img className="w-full h-auto md:w-40 md:h-40" src={image} alt={name} />
-      <div className="flex flex-col gap-3">
-        <strong className="text-lg font-normal md:text-2xl md:font-medium">
+    <li className="grid grid-cols-2 gap-5 pb-3 border-b place-items-center sm:pb-4 border-dark dark:border-light">
+      <img
+        className="object-cover w-full h-auto rounded-lg"
+        src={image}
+        alt={name}
+      />
+      <div className="flex flex-col gap-5">
+        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
           {name}
-        </strong>
-        <p className="text-sm text-success md:text-base">{stock}</p>
-        <p className="text-sm md:text-base">
-          Sold by: <span className="text-primary">{soldBy}</span>
         </p>
-        <div className="flex items-center gap-3">
-          <Counter
-            title=""
-            onChange={(value) => {
-              setQuantity(value);
-            }}
-            value={quantity}
-          />
-          <p className="text-sm text-danger md:text-base">
-            {leftInStock} left in stock
-          </p>
-        </div>
+        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+          Quantity: {quantity}
+        </p>
+        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+          Unit Price: {totalPrice}
+        </p>
       </div>
-    </div>
+      <p>Subtotal: {totalPrice * quantity}</p>
+      <div className="flex items-center justify-between gap-5">
+        <form className="grid col-span-2 gap-5" onSubmit={handleUpdateCart}>
+          <select
+            name="quantity"
+            id="quantity"
+            defaultValue={quantity}
+            onChange={(e) => handleUpdateCart(e)}
+            className="bg-primary/5 backdrop-blur-sm border-[0.5px] border-secondary px-10 py-2 rounded flex items-center justify-center"
+          >
+            {Array.from({ length: available }, (_, i) => (
+              <option key={i} value={i + 1}>
+                {i + 1}
+              </option>
+            ))}
+          </select>
+        </form>
+        <Button
+          label="Remove"
+          colorScheme="btn-danger-outline"
+          onClick={handleRemoveFromCart}
+        />
+      </div>
+    </li>
   );
 }

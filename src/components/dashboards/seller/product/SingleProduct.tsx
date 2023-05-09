@@ -30,6 +30,7 @@ export function SingleProduct({ id }: { id: string }) {
           />
         </div>
         <ProductCard
+          id={product.id}
           category={product.category}
           description={product.description}
           image={product.images}

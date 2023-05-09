@@ -8,6 +8,7 @@ export type Image = {
 };
 
 export type ProductCardProps = {
+  id: string;
   image: string;
   title: string;
   category: string;

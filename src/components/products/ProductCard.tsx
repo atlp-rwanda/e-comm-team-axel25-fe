@@ -5,6 +5,7 @@ import { Container } from '../Container';
 import { ProductCardProps } from '../../utils/types';
 
 export function ProductCard({
+  id,
   title,
   category,
   description,
@@ -19,6 +20,7 @@ export function ProductCard({
         <div className="grid items-start grid-cols-1 gap-6 sm:grid-cols-3">
           <ProductImage image={image} />
           <ProductInfo
+            id={id}
             title={title}
             category={category}
             description={description}

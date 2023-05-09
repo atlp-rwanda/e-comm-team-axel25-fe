@@ -5,6 +5,7 @@ import { BsFillCheckCircleFill } from 'react-icons/bs';
 
 import { TProduct } from '../../../../utils/schemas';
 import { Modal } from '../../../shared';
+import { useGetProductsQuery } from '../../../../services';
 
 type EditProductDialogueProps = {
   currentProduct: TProduct;
@@ -18,13 +19,16 @@ export function EditProductDialogue({
   setIsOpen,
 }: EditProductDialogueProps) {
   const navigate = useNavigate();
+  const { refetch } = useGetProductsQuery();
   const handleClose = () => {
     setIsOpen(!isOpen);
+    refetch();
     navigate('/dashboard/seller/product');
   };
 
   const handleProductEdit = () => {
     setIsOpen(!isOpen);
+    refetch();
     navigate('/dashboard/seller/product');
   };
   const bodyContent = (

@@ -1,16 +1,19 @@
 import React from 'react';
 import { IconType } from 'react-icons';
 import { FaTimes } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { BiUserMinus } from 'react-icons/bi';
 import Profile from './profile';
 import { SidebarFooter } from './SidebarFooter';
 import { mergeClassNames } from '../../lib';
 import { useSideBarLogic } from '../../hooks';
 import { SidebarMenuItem, DropDownsList } from './SidebarMenuItem';
+import { RootState } from '../../store';
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-  headerProfile: { image: string | JSX.Element; name: string; role: string };
+  headerProfile: { image: JSX.Element|string; name: string; role: string };
   menuItems: Array<{ to: string; icon: IconType; label: string; className?: string }>;
   dropDown: {
     title: string;
@@ -35,6 +38,7 @@ export function Sidebar({
     'opacity-100 -translate-x-0': showSideBar,
     'opacity-0 -translate-x-full': !showSideBar,
   });
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
   if (!isOpen) return null;
 
@@ -44,9 +48,9 @@ export function Sidebar({
         <div ref={containerRef} className={sideBarAnimationClassNames}>
           <header className="flex items-center justify-center w-full px-6 py-2 text-black shadow-inner backdrop-blur-sm bg-primary/10 dark:text-white">
             <Profile
-              image={headerProfile.image}
-              name={headerProfile.name}
-              role={headerProfile.role}
+              image={isAuthenticated ? headerProfile.image : <BiUserMinus className="w-10 h-10" />}
+              name={isAuthenticated ? headerProfile.name : 'Not logged in'}
+              role={isAuthenticated ? headerProfile.role : ''}
             />
             <div className="absolute top-6 left-[90%] md:left-[82%] w-10 h-10 ml-2">
               <button type="button" onClick={handleClose}>

@@ -76,6 +76,7 @@ export function LoginForm() {
               id: user?.data.id,
             }),
           );
+          localStorage.setItem('userId', user?.data.id);
         }
 
         if (request.ok) {
@@ -84,8 +85,6 @@ export function LoginForm() {
         reset();
       })
       .catch((err) => {
-        console.log(err);
-
         setError(err.message);
         setMessage('');
         setIsLoading(false);

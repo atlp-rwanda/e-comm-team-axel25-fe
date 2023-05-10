@@ -13,6 +13,7 @@ import { Loader } from './Loader';
 import { RequireAuth } from './RequireAuth';
 import Dashboard from './Dashboard/Dashboard';
 import { HomeSlider } from './shared/HomeSlider';
+import { SpinerButton, Spiner } from './SpinerButton';
 
 export {
   Footer,
@@ -30,4 +31,6 @@ export {
   Dashboard,
   Alert,
   HomeSlider,
+  SpinerButton,
+  Spiner,
 };

@@ -11,8 +11,13 @@ import { RootState } from '../../../store';
 import { logout } from '../../../reducers/authReducer';
 import { useGetCartItemsQuery } from '../../../services';
 import { useHomeLogic } from '../../../hooks';
+import { NotificationPane } from '../../../features/notification/NotificationPane';
+import { useGetAllNotificationsQuery } from '../../../features/notification/services/notifications';
 
 export function UserMenu() {
+  const { data } = useGetAllNotificationsQuery();
+  const notificationsLength = data?.data.length;
+
   const [isOpen, setIsOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
@@ -60,6 +65,12 @@ export function UserMenu() {
   return (
     <div className="relative">
       <div className="flex items-center gap-3">
+        <div className="relative flex flex-col items-start justify-center mr-2">
+          <NotificationPane />
+          <span className="absolute text-white top-[-8px] right-[-8px] flex items-center justify-center w-4 h-4 ml-3 text-xs bg-red-500 rounded">
+            {notificationsLength || 0}
+          </span>
+        </div>
         {/* THEME TOGGLE START HERE */}
         <ThemeToggle />
         {/* THEME TOGGLE END HERE */}

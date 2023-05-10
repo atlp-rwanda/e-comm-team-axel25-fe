@@ -1,12 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { useSideBar, useTheme } from './hooks';
-import {
-  authApi, cartApi, productApi, resetPasswordApi,
-} from './services';
+import { authApi, cartApi, productApi, resetPasswordApi } from './services';
 import { ecomApi } from './features/authentication/services/login';
 import { ecomUserApi } from './features/authentication/services/getUser';
 import { cartSlice, authSlice } from './reducers';
+import { notificationApi } from './features/notification/services/notifications';
 
 const store = configureStore({
   reducer: {
@@ -20,16 +19,19 @@ const store = configureStore({
     [productApi.reducerPath]: productApi.reducer,
     [resetPasswordApi.reducerPath]: resetPasswordApi.reducer,
     [cartApi.reducerPath]: cartApi.reducer,
+    [notificationApi.reducerPath]: notificationApi.reducer,
   },
 
-  middleware: (g) => g().concat(
-    authApi.middleware,
-    resetPasswordApi.middleware,
-    ecomApi.middleware,
-    ecomUserApi.middleware,
-    productApi.middleware,
-    cartApi.middleware,
-  ),
+  middleware: (g) =>
+    g().concat(
+      authApi.middleware,
+      resetPasswordApi.middleware,
+      ecomApi.middleware,
+      ecomUserApi.middleware,
+      productApi.middleware,
+      cartApi.middleware,
+      notificationApi.middleware,
+    ),
 });
 
 setupListeners(store.dispatch);

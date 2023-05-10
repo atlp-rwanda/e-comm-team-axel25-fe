@@ -9,6 +9,7 @@ import {
   useDeleteProductMutation,
   useGetProductsQuery,
 } from '../../../../services';
+import { useGetAllNotificationsQuery } from '../../../../features/notification/services/notifications';
 
 type DeleteProductDialogueProps = {
   currentProduct: TProduct;
@@ -23,6 +24,8 @@ export function DeleteProductDialogue({
 }: DeleteProductDialogueProps) {
   const [deleteProduct] = useDeleteProductMutation();
   const { refetch } = useGetProductsQuery();
+  const { refetch: notifications } = useGetAllNotificationsQuery();
+
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -35,6 +38,7 @@ export function DeleteProductDialogue({
       .then(() => {
         setIsOpen(!isOpen);
         refetch();
+        notifications();
         navigate('/dashboard/seller/product');
       });
   };

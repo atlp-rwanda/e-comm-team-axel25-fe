@@ -18,7 +18,7 @@ declare global {
 export function Login() {
   const navigate = useNavigate();
   const { handleGoogleLogin, error, loading } = useGoogleAuth();
-
+  
   useEffect(() => {
     const CLIENT_ID = checkEnv(config.REACT_APP_GOOGLE_CLIENT_ID);
 

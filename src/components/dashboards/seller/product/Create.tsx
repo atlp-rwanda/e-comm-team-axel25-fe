@@ -23,6 +23,7 @@ import {
 } from '../../../../services';
 import { Loader } from '../../../Loader';
 import { EditProductDialogue } from './EditProductDialogue';
+import { useGetAllNotificationsQuery } from '../../../../features/notification/services/notifications';
 
 export function Create() {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +45,7 @@ export function Create() {
   });
   const [createProduct] = useCreateProductMutation();
   const { refetch } = useGetProductsQuery();
+  const { refetch: notifications } = useGetAllNotificationsQuery();
 
   const {
     register,
@@ -72,6 +74,7 @@ export function Create() {
       .then((payload) => {
         setCurrentProduct(payload.data[0]);
         refetch();
+        notifications();
         setIsOpen(true);
       })
       .catch((err) => console.log(err));

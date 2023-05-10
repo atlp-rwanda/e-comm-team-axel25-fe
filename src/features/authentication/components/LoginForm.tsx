@@ -82,17 +82,22 @@ export function LoginForm() {
               avatar: user?.data.avatar,
               id: user?.data.id,
               status: user?.data.status,
+              role: user?.data.role,
+              token: payload?.data,
             }),
           );
           localStorage.setItem('userId', user?.data.id);
         }
 
         if (request.ok) {
-          if (user?.data.status === 'Needs_Password_Reset') {
-            navigate('/need-pri');
+          if (user.data.twoFAenabled) {
+            localStorage.setItem('token', payload?.data as string);
+            window.location.href = '/dashboard/seller/settings/2fa/success-route';
+          } else if (user?.data.status === 'Needs_Password_Reset') {
+            window.location.href = '/need-pri';
           } else {
             localStorage.setItem('token', payload?.data as string);
-            navigate('/');
+            window.location.href = '/';
           }
         }
         reset();
@@ -151,7 +156,24 @@ export function LoginForm() {
           <small className="ml-15">Forget password</small>
         </Link>
         {isLoading ? (
-          <SpinerButton />
+          <div className="w-full px-4 py-2 rounded border-[0.5px] border-white btn-secondary  backdrop-blur-sm col-span-1 flex justify-center items-center">
+            <svg
+              className="animate-spin h-5 w-5 text-gray-500"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-100"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="white"
+                strokeWidth="4"
+                fill="none"
+                strokeDasharray="8"
+                strokeDashoffset="-82"
+              />
+            </svg>
+          </div>
         ) : (
           <div className="col-span-1">
             <Button

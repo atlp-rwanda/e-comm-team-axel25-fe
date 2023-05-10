@@ -5,7 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { TProduct } from '../../../../utils/schemas';
 import { Modal } from '../../../shared';
-import { useDeleteProductMutation } from '../../../../services';
+import {
+  useDeleteProductMutation,
+  useGetProductsQuery,
+} from '../../../../services';
 
 type DeleteProductDialogueProps = {
   currentProduct: TProduct;
@@ -19,6 +22,7 @@ export function DeleteProductDialogue({
   setIsOpen,
 }: DeleteProductDialogueProps) {
   const [deleteProduct] = useDeleteProductMutation();
+  const { refetch } = useGetProductsQuery();
   const navigate = useNavigate();
 
   const handleClose = () => {
@@ -30,7 +34,8 @@ export function DeleteProductDialogue({
       .unwrap()
       .then(() => {
         setIsOpen(!isOpen);
-        navigate('/dashboard/seller/product', { replace: true });
+        refetch();
+        navigate('/dashboard/seller/product');
       });
   };
   const bodyContent = (

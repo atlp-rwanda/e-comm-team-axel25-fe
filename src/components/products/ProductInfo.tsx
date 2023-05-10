@@ -4,8 +4,10 @@ import { Heading } from '../Heading';
 import Stars from '../shared/Stars';
 import { Button } from '../shared';
 import { Counter } from '../inputs/Counter';
+import { useAddToCartMutation, useGetCartItemsQuery } from '../../services';
 
 type ProductInfoProps = {
+  id: string;
   title: string;
   category: string;
   rating: number;
@@ -15,6 +17,7 @@ type ProductInfoProps = {
 };
 
 export function ProductInfo({
+  id,
   title,
   category,
   rating,
@@ -22,7 +25,18 @@ export function ProductInfo({
   description,
   quantity,
 }: ProductInfoProps) {
+  const [addToCart] = useAddToCartMutation();
+  const { refetch } = useGetCartItemsQuery();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+
+  const handleAddToCart = () => {
+    addToCart({ productId: id, quantity: selectedQuantity })
+      .unwrap()
+      .then(() => refetch())
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   return (
     <section className="grid gap-5">
@@ -57,7 +71,7 @@ export function ProductInfo({
             setSelectedQuantity(value);
           }}
           value={selectedQuantity}
-          max={10}
+          max={quantity}
         />
         <Button
           label="Buy now"
@@ -69,9 +83,7 @@ export function ProductInfo({
         <Button
           label="Add to cart"
           colorScheme="btn-secondary-outline"
-          onClick={() => {
-            // TODO: Add to cart
-          }}
+          onClick={handleAddToCart}
         />
       </main>
     </section>

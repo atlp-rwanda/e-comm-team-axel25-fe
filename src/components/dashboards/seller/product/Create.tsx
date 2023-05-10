@@ -17,7 +17,10 @@ import {
 import { InputField } from '../../../inputs/InputField';
 import { SelectorField } from '../../../inputs/SelectorField';
 import { UploadImage } from './UploadImage';
-import { useCreateProductMutation } from '../../../../services';
+import {
+  useCreateProductMutation,
+  useGetProductsQuery,
+} from '../../../../services';
 import { Loader } from '../../../Loader';
 import { EditProductDialogue } from './EditProductDialogue';
 
@@ -40,6 +43,7 @@ export function Create() {
     sellerId: '',
   });
   const [createProduct] = useCreateProductMutation();
+  const { refetch } = useGetProductsQuery();
 
   const {
     register,
@@ -67,6 +71,7 @@ export function Create() {
       .unwrap()
       .then((payload) => {
         setCurrentProduct(payload.data[0]);
+        refetch();
         setIsOpen(true);
       })
       .catch((err) => console.log(err));

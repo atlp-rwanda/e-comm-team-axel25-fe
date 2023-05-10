@@ -1,12 +1,12 @@
 import React from 'react';
 import { categories } from '../../../data';
 import { CategoryBox } from './CategoryBox';
-import { ScrollButton, SideBarButton } from '../../sidebar';
+import { ScrollButton } from '../../sidebar';
 import { useHomeLogic } from '../../../hooks';
 
 export function Categories() {
   const {
-    containerRef, currentCategory, handleToggleSideBar, isHome, scrollLeft, scrollRight,
+    containerRef, currentCategory, isHome, scrollLeft, scrollRight,
   } = useHomeLogic();
 
   if (!isHome) return null;
@@ -16,7 +16,7 @@ export function Categories() {
       <ScrollButton direction="left" onClick={scrollLeft} />
       <div
         ref={containerRef}
-        className="mx-10 flex items-center justify-between pt-1 overflow-x-auto thumb-hide"
+        className="flex items-center justify-between pt-1 mx-10 overflow-x-auto thumb-hide"
       >
         {categories.map((item) => (
           <CategoryBox

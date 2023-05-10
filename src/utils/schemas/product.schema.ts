@@ -30,7 +30,7 @@ export const createProductSchema = z.object({
   }),
 });
 
-const productSchema = z.object({
+export const productSchema = z.object({
   ...createProductSchema.shape,
   sellerId: z.string(),
   createdAt: z.date(),

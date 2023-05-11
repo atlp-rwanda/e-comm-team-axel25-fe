@@ -53,7 +53,7 @@ function DropdownMenu({ name, icon: Icon, menus }: DropdownMenuProps) {
       >
         {menus.map((menu) => (
           <li key={menu}>
-            <NavLink to={`/${name}/${menu}`} className="bg-transparent capitalize dark:text-white dark:hover:text-primary hover:text-primary">
+            <NavLink to={`/dashboard/admin/${name}/${menu}`} className="bg-transparent capitalize dark:text-white dark:hover:text-primary hover:text-primary">
               {menu}
             </NavLink>
           </li>

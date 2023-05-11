@@ -98,6 +98,7 @@ export function LoginForm() {
           } else {
             localStorage.setItem('token', payload?.data as string);
             window.location.href = '/';
+            window.location.href = '/';
           }
         }
         reset();

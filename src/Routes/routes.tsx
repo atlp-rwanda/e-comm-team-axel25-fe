@@ -12,12 +12,13 @@ import {
   SellerProducts,
   UpdateProduct,
   PasswordReset,
+  Register,
+  Chat,
   Profile,
   PasswordUpdate,
 
 } from '../pages';
 import { RequireAuth } from '../components';
-import { Register } from '../pages/Register';
 import NeedPRI from '../features/authentication/components/NeedPRI';
 import { ProfileUpdate } from '../pages/profile/profileUpdate';
 import Settings from '../components/dashboards/Settings';
@@ -33,6 +34,8 @@ export const router = createBrowserRouter(
       <Route path="register" element={<Register />} />
       <Route path="profile/:userId" element={<Profile />} />
       <Route path="profile/edit/:userId" element={<ProfileUpdate />} />
+      <Route path="chat" element={<Chat />} />
+      <Route path="chat/:userId" element={<Chat />} />
 
       <Route path="forbidden" element={<Forbidden />} />
       <Route path="password-reset" element={<PasswordReset />} />
@@ -57,6 +60,8 @@ export const router = createBrowserRouter(
           <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
+
+      <Route path="need-pri" element={<NeedPRI />} />
 
       <Route path="need-pri" element={<NeedPRI />} />
 

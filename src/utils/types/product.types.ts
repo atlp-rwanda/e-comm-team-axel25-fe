@@ -16,4 +16,5 @@ export type ProductCardProps = {
   price: number;
   rating: number;
   quantity: number;
+  seller: string;
 };

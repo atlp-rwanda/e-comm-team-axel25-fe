@@ -38,6 +38,7 @@ export function SingleProduct({ id }: { id: string }) {
           title={product.name}
           rating={product.quantity}
           quantity={product.quantity}
+          seller={product.sellerId}
         />
       </div>
     </Container>

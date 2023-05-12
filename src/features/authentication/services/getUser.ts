@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { config } from '../../../data/constants';
 import { getToken } from '../../../utils';
+import { User } from '../../../utils/types';
 
 const token = getToken();
 const baseUrl = config.REACT_APP_API_BASE_URL;
@@ -10,7 +11,7 @@ export const ecomUserApi = createApi({
   tagTypes: ['user'],
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
-    getUser: builder.query({
+    getUser: builder.query<{data: User}, unknown>({
       query: (id) => ({
         url: `user/${id}`,
         method: 'GET',
